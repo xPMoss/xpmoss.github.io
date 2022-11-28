@@ -19,6 +19,7 @@ class ProjectElement extends HTMLDivElement{
         this.classList.add("col-sm-6");
         this.classList.add("col-md-4");
         this.classList.add("col-lg-3");
+        this.classList.add("col-xl-2");
         this.classList.add("mb-4");
         this.id = this.title;
 
