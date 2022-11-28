@@ -7,6 +7,7 @@ function start(){
     // Create container
     let container = document.createElement("div");
     container.classList.add("container-fluid");
+    container.classList.add("px-4");
 
     // Create row
     let row = document.createElement("div");

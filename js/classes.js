@@ -16,15 +16,11 @@ class ProjectElement extends HTMLDivElement{
         this.info = data.info;
         this.link = data.link;
 
-        this.classList.add("col-6");
+        this.classList.add("col-sm-6");
+        this.classList.add("col-md-4");
+        this.classList.add("col-lg-3");
         this.classList.add("mb-4");
         this.id = this.title;
-
-        let row = document.createElement("div");
-        row.classList.add("row");
-
-        let col = document.createElement("div");
-        col.classList.add("col");
 
         let listGroup = document.createElement("div");
         listGroup.classList.add("list-group");
@@ -33,51 +29,89 @@ class ProjectElement extends HTMLDivElement{
         let item;
 
         for (let [k, v] of Object.entries(data)) {
+            let figure = document.createElement("figure");
 
             item = document.createElement("div");
-            
 
             if (k == "title") {
                 item = document.createElement("h4");
                 item.classList.add("active");
+                item.classList.add("text-truncate");
                 //data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             }
+            else if (k == "image") {
+                    item = document.createElement("img");
+                    item.classList.add("img-fluid");
+                    item.classList.add("disabled");
+                    item.classList.add("text-dark");
+                
+
+                if (v) {
+                    item.src = "./img/" + data.image;
+                }
+                else{
+                    item.src = "https://via.placeholder.com/320x180?text=TEXT";
+
+                }
+                
+            }
             else{
-                
-                
-                item.classList.add("disabled");
-                item.classList.add("text-dark");
+                if (k == "link") {
+                    item = document.createElement("a");
+                    item.classList.add("text-truncate");
+                    item.classList.add("text-start");
+                    item.classList.add("rounded-0");
+                    item.classList.add("rounded-bottom");
+                    item.classList.add("px-3");
+                    item.classList.add("btn");
+                    item.classList.add("btn-secondary");
+                    item.target = "_blank";
+                    item.href = v;
+                }
+
+                if (k != "link") {
+                    item.classList.add("disabled");
+                    item.classList.add("text-dark");
+                }
+
+
             }
             
-            item.classList.add("m-0");
-            item.classList.add("list-group-item");
-            item.classList.add("list-group-item-action");
             
-           
+            
+            if (k != "link") {
+                //item.classList.add("bg-light");
+                item.classList.add("m-0");
+                item.classList.add("list-group-item");
+                item.classList.add("list-group-item-action");
+
+            }
+            
             if (k == "title") {
                 item.innerHTML = v;
             }
+            else if (k == "image") {
+                
+            }
             else{
                 let uc = k.charAt(0).toUpperCase() + k.slice(1, k.length); // First letter to uppercase
-                item.innerHTML = "<small class='text-secondary'><b>" + uc + ": </b></small><br/>";
+                item.innerHTML = "<small class=''><b>" + uc + ": </b></small><br/>";
                 item.innerHTML += v;
 
             }
-            
+                    
 
             listGroup.appendChild(item);
+
+
             //console.log(k)
             //console.log(v)
         }
 
-        let colR = document.createElement("div");
-        colR.classList.add("col");
+        
 
-        col.appendChild(listGroup);
-        row.appendChild(col);
-        row.append(colR);
-        this.appendChild(row);
-
+        this.appendChild(listGroup);
+        
         //return this;
     }
     
