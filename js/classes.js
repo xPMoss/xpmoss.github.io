@@ -588,11 +588,16 @@ customElements.define('canvas-element', CanvasElement, {extends: 'canvas'});
 
 
 class ProjectElement extends HTMLDivElement{
+    header;
+    body = [];
+    image;
 
     techniques;
     info;
     link;
     title;
+
+    isCollapsed = false;
 
     constructor(data){
         super(); // always call super() first in the constructor.
@@ -623,10 +628,66 @@ class ProjectElement extends HTMLDivElement{
             item = document.createElement("div");
 
             if (k == "title") {
-                item = document.createElement("h4");
+                item = document.createElement("div");
                 item.classList.add("active");
                 item.classList.add("text-truncate");
+
+
+                item.style.background = "HSL(0, 0%, 40%)"
+                item.style.border = "none"
+
+                
+
+                item.style.userSelect = "none"
+                
+
+                let row = document.createElement("div");
+                row.classList.add("row");
+                row.classList.add("pe-2");
+                row.classList.add("text-truncate");
+                row.classList.add("justify-content-between");
+
+                let header = document.createElement("h4");
+                header.classList.add("col-10");
+                header.classList.add("text-truncate");
+                header.innerHTML = v;
+
+                let closeBtn = document.createElement("div");
+                closeBtn.classList.add("col-auto");
+                closeBtn.classList.add("border");
+                closeBtn.classList.add("rounded");
+                closeBtn.style.cursor = "pointer"
+                closeBtn.innerHTML = "_"
+                closeBtn.onmouseover = ()=>{
+                  closeBtn.style.background = "HSL(200, 40%, 40%)"
+                }
+
+                closeBtn.onmouseleave = ()=>{
+                  closeBtn.style.background = "HSL(0, 0%, 40%)"
+                }
+
+                closeBtn.onmousedown = ()=>{
+                  closeBtn.style.background = "HSL(200, 20%, 60%)"
+                }
+
+                closeBtn.onmouseup = ()=>{
+                  closeBtn.style.background = "HSL(200, 40%, 40%)"
+                }
+
+
+                closeBtn.addEventListener("click", ()=>{
+                  this.collapse();
+  
+                })
                 //data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+
+              this.header = item;
+
+              row.append(header)
+              row.append(closeBtn)
+                item.append(row)
+              
+
             }
             else if (k == "image") {
                   item = document.createElement("a");
@@ -651,6 +712,7 @@ class ProjectElement extends HTMLDivElement{
 
                 item.append(new CanvasElement(data));
 
+                this.image = item;
                 
                 //item.append(img);
                 
@@ -659,12 +721,10 @@ class ProjectElement extends HTMLDivElement{
                 if (k == "link") {
                     item = document.createElement("a");
                     item.classList.add("text-truncate");
-                    item.classList.add("text-start");
-                    item.classList.add("rounded-0");
-                    item.classList.add("rounded-bottom");
-                    item.classList.add("px-3");
-                    item.classList.add("btn");
-                    item.classList.add("btn-secondary");
+
+                    item.classList.add("list-group-item");
+                    item.classList.add("list-group-item-action");
+    
                     item.target = "_blank";
                     item.href = v;
                 }
@@ -674,7 +734,7 @@ class ProjectElement extends HTMLDivElement{
                     item.classList.add("text-dark");
                 }
 
-
+                
             }
             
             
@@ -688,7 +748,7 @@ class ProjectElement extends HTMLDivElement{
             }
             
             if (k == "title") {
-                item.innerHTML = v;
+                
             }
             else if (k == "image") {
                 
@@ -698,6 +758,10 @@ class ProjectElement extends HTMLDivElement{
                 item.innerHTML = "<small class=''><b>" + uc + ":</b></small><br/>";
                 item.innerHTML += v;
 
+            }
+
+            if (k != "title" && k != "image") {
+              this.body.push(item);
             }
                     
 
@@ -710,6 +774,43 @@ class ProjectElement extends HTMLDivElement{
         //<--
 
         this.appendChild(listGroup);
+
+    }
+
+    update(){
+
+
+
+      if (this.isCollapsed) {
+        this.header.style.display = "none"
+      }
+
+    }
+
+
+    collapse(){
+      this.isCollapsed = !this.isCollapsed;
+
+      if (this.isCollapsed) {
+
+        for (const item of this.body) {
+          item.style.display = "none";
+          
+        }
+        this.image.classList.remove("rounded-0")
+        this.image.classList.add("rounded-bottom")
+      }
+      else{
+        for (const item of this.body) {
+          item.style.display = "block";
+          
+        }
+        this.image.classList.remove("rounded-bottom")
+        this.image.classList.add("rounded-0")
+      }
+
+      console.log("collapse")
+      console.log(this.isCollapsed)
 
     }
     
