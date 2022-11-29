@@ -781,9 +781,7 @@ class ProjectElement extends HTMLDivElement{
 
 
 
-      if (this.isCollapsed) {
-        this.header.style.display = "none"
-      }
+   
 
     }
 
@@ -809,8 +807,8 @@ class ProjectElement extends HTMLDivElement{
         this.image.classList.add("rounded-0")
       }
 
-      console.log("collapse")
-      console.log(this.isCollapsed)
+      //console.log("collapse")
+      //console.log(this.isCollapsed)
 
     }
     
@@ -821,29 +819,3 @@ customElements.define('project-element', ProjectElement, {extends: 'div'});
 
 
 
-
-/*
- <div class="container-fluid">
-    <div class="row">
-      <div class="col-auto">
-        <div class="list-group">
-          <h4 href="#" class="list-group-item list-group-item-action active">
-            Animation Library
-          </h4>
-          <div class="list-group-item list-group-item-action disabled text-dark">
-            <small>Techniques:<br/></small>Javascript
-          </div>
-          <div class="list-group-item list-group-item-action disabled text-dark">
-            <small>Info:<br/></small>For easy animation directly in Html code.
-          </div>
-          <a href="https://github.com/xPMoss/anim.lib" class="list-group-item list-group-item-action" target="_blank">
-            <small>Link:<br/></small>https://github.com/xPMoss/anim.lib
-          </a>
-        </div>
-
-      </div>
-    </div>
-
-
-
-*/
