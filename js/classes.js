@@ -41,19 +41,25 @@ class ProjectElement extends HTMLDivElement{
                 //data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             }
             else if (k == "image") {
-                    item = document.createElement("img");
-                    item.classList.add("img-fluid");
-                    item.classList.add("disabled");
-                    item.classList.add("text-dark");
+                  item = document.createElement("a");
+                  //item.classList.add("disabled");
+                  item.classList.add("text-dark");
+                  item.href = data.link;
+                  item.target = "_blank"
+
+                  let img = document.createElement("img");
+                  img.classList.add("img-fluid");
                 
 
                 if (v) {
-                    item.src = "./img/" + data.image;
+                  img.src = "./img/" + data.image;
                 }
                 else{
-                    item.src = "https://via.placeholder.com/320x180?text=TEXT";
+                  img.src = "https://via.placeholder.com/320x180?text=TEXT";
 
                 }
+
+                item.append(img);
                 
             }
             else{
@@ -96,7 +102,7 @@ class ProjectElement extends HTMLDivElement{
             }
             else{
                 let uc = k.charAt(0).toUpperCase() + k.slice(1, k.length); // First letter to uppercase
-                item.innerHTML = "<small class=''><b>" + uc + ": </b></small><br/>";
+                item.innerHTML = "<small class=''><b>" + uc + ":</b></small><br/>";
                 item.innerHTML += v;
 
             }
