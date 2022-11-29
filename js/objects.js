@@ -44,6 +44,22 @@ let projects = [
         techniques:"Javascript, html, css",
         info:"Testing coding with canvas. A 'fake' 3D box with javascript",
         link:"https://xpmoss.github.io/threedcube/"
+    },
+    {
+        title:"My webpage",
+        image:"xpm.jpg",
+        techniques:"Javascript, html, css",
+        info:"My webpage",
+        link:"https://xpm.one/"
+
+    },
+    {
+        title:"Turbosquid",
+        image:"ts.jpg",
+        techniques:"3D-graphics, modelling, texturing, rendering",
+        info:"My turbosquid page",
+        link:"https://www.turbosquid.com/Search/Artists/wemg?referral=wemg"
+
     }
 
 
