@@ -1,0 +1,32 @@
+
+
+
+
+
+
+
+
+.bg-white{
+    background-color: hsl(0, 0%, 95%);
+}
+
+.bg-black{
+    background-color: hsl(0, 0%, 5%);
+}
+
+
+.bg-orange{
+    background-color: hsl(35, 20%, 90%);
+}
+
+.bg-purple{
+    background-color: hsl(300, 20%, 90%);
+}
+
+.bg-green{
+    background-color: hsl(105, 20%, 90%);
+}
+
+.bg-blue{
+    background-color: hsl(200, 20%, 90%);
+}

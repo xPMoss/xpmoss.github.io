@@ -592,6 +592,8 @@ class ProjectElement extends HTMLDivElement{
     body = [];
     image;
 
+    imgSrc;
+
     techniques;
     info;
     link;
@@ -606,181 +608,215 @@ class ProjectElement extends HTMLDivElement{
         this.techniques = data.techniques;
         this.info = data.info;
         this.link = data.link;
+        this.image = data.image
+        this.imgSrc = data.image
 
-        this.classList.add("col-sm-6");
-        this.classList.add("col-md-4");
-        this.classList.add("col-lg-3");
-        this.classList.add("col-xl-2");
+        this.classList.add("col-sm-12");
+        this.classList.add("col-md-6");
+        this.classList.add("col-lg-4");
+        this.classList.add("col-xl-3");
+        this.classList.add("p-0", "m-0")
         this.classList.add("mb-4");
         this.id = this.title;
 
-        let listGroup = document.createElement("div");
-        listGroup.classList.add("list-group");
+        this.render()
+
+    }
+
+    render(){
+      let data = {
+        title: this.title,
+        image: this.imgSrc,
+        techniques: this.techniques,
+        info: this.info,
+        link: this.link,
+        
+      }
+
+      this.innerHTML = ""
+
+      let listGroup = document.createElement("div");
+      listGroup.classList.add("list-group");
 
 
-        // Create items
-        //-->
-        let item;
+      // Create items
+      //-->
+      let item;
 
-        for (let [k, v] of Object.entries(data)) {
-            let figure = document.createElement("figure");
+      for (let [k, v] of Object.entries(data)) {
+          let figure = document.createElement("figure");
 
-            item = document.createElement("div");
+          item = document.createElement("div");
 
-            if (k == "title") {
-                item = document.createElement("div");
-                item.classList.add("active");
-                item.classList.add("text-truncate");
+          if (k == "title") {
+              item = document.createElement("div");
+              item.classList.add("active");
+              item.classList.add("text-truncate");
 
 
-                item.style.background = "HSL(0, 0%, 40%)"
-                item.style.border = "none"
+              item.style.background = "HSL(0, 0%, 40%)"
+              item.style.border = "none"
 
+              item.style.userSelect = "none"
+              
+              let row = document.createElement("div");
+              row.classList.add("row");
+              row.classList.add("pe-2");
+              row.classList.add("text-truncate");
+              row.classList.add("justify-content-between");
+
+              let header = document.createElement("h4");
+              header.classList.add("col-10");
+              header.classList.add("text-truncate");
+              header.innerHTML = v;
+
+              let closeBtn = document.createElement("div");
+              closeBtn.classList.add("col-auto");
+              closeBtn.classList.add("border");
+              closeBtn.classList.add("rounded");
+              closeBtn.style.cursor = "pointer"
+              if (this.isCollapsed) {
+                let caretUp = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 10">
                 
+                <path d="M3.204 11h9.592L8 5.519zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659" />
+              </svg>`
 
-                item.style.userSelect = "none"
+                closeBtn.innerHTML = caretUp
+              }
+              else{
                 
+                let caretDown = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" stroke="" viewbox="0 0 32 28" class="bi bi-caret-down">
+                
+                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" transform="scale(2,2)"></path>
+                </svg>`
 
-                let row = document.createElement("div");
-                row.classList.add("row");
-                row.classList.add("pe-2");
-                row.classList.add("text-truncate");
-                row.classList.add("justify-content-between");
+                closeBtn.innerHTML = caretDown
+              }
+              
+              closeBtn.onmouseover = ()=>{
+                closeBtn.style.background = "HSL(200, 40%, 40%)"
+              }
 
-                let header = document.createElement("h4");
-                header.classList.add("col-10");
-                header.classList.add("text-truncate");
-                header.innerHTML = v;
+              closeBtn.onmouseleave = ()=>{
+                closeBtn.style.background = "HSL(0, 0%, 40%)"
+              }
 
-                let closeBtn = document.createElement("div");
-                closeBtn.classList.add("col-auto");
-                closeBtn.classList.add("border");
-                closeBtn.classList.add("rounded");
-                closeBtn.style.cursor = "pointer"
-                closeBtn.innerHTML = "_"
-                closeBtn.onmouseover = ()=>{
-                  closeBtn.style.background = "HSL(200, 40%, 40%)"
-                }
+              closeBtn.onmousedown = ()=>{
+                closeBtn.style.background = "HSL(200, 20%, 60%)"
+              }
 
-                closeBtn.onmouseleave = ()=>{
-                  closeBtn.style.background = "HSL(0, 0%, 40%)"
-                }
-
-                closeBtn.onmousedown = ()=>{
-                  closeBtn.style.background = "HSL(200, 20%, 60%)"
-                }
-
-                closeBtn.onmouseup = ()=>{
-                  closeBtn.style.background = "HSL(200, 40%, 40%)"
-                }
+              closeBtn.onmouseup = ()=>{
+                closeBtn.style.background = "HSL(200, 40%, 40%)"
+              }
 
 
-                closeBtn.addEventListener("click", ()=>{
-                  this.collapse();
-  
-                })
-                //data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              closeBtn.addEventListener("click", ()=>{
+                this.collapse();
 
-              this.header = item;
+              })
+              //data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 
-              row.append(header)
-              row.append(closeBtn)
-                item.append(row)
+            this.header = item;
+
+            row.append(header)
+            row.append(closeBtn)
+            item.append(row)
+            
+
+          }
+          else if (k == "image") {
+                item = document.createElement("a");
+                //item.classList.add("disabled");
+                item.classList.add("text-dark");
+                item.href = data.link;
+                item.target = "_blank"
+
+                let img = document.createElement("img");
+                img.classList.add("img-fluid");
+                
+                //img.classList.add("p-0");
               
 
-            }
-            else if (k == "image") {
+              if (v) {
+                img.src = "./img/" + data.image;
+              }
+              else{
+                img.src = "https://via.placeholder.com/320x180?text=TEXT";
+
+              }
+
+              item.append(new CanvasElement(data));
+
+              this.image = item;
+              
+              //item.append(img);
+              
+          }
+          else{
+              if (k == "link") {
                   item = document.createElement("a");
-                  //item.classList.add("disabled");
+                  item.classList.add("text-truncate");
+
+                  item.classList.add("list-group-item");
+                  item.classList.add("list-group-item-action");
+  
+                  item.target = "_blank";
+                  item.href = v;
+              }
+
+              if (k != "link") {
+                  item.classList.add("disabled");
                   item.classList.add("text-dark");
-                  item.href = data.link;
-                  item.target = "_blank"
+              }
 
-                  let img = document.createElement("img");
-                  img.classList.add("img-fluid");
+              
+          }
+          
+          
+          
+          if (k != "link") {
+              //item.classList.add("bg-light");
+              item.classList.add("m-0");
+              item.classList.add("list-group-item");
+              item.classList.add("list-group-item-action");
+
+          }
+          
+          if (k == "title") {
+              
+          }
+          else if (k == "image") {
+              
+          }
+          else{
+              let uc = k.charAt(0).toUpperCase() + k.slice(1, k.length); // First letter to uppercase
+              item.innerHTML = "<small class=''><b>" + uc + ":</b></small><br/>";
+              item.innerHTML += v;
+
+          }
+
+          if (k != "title" && k != "image") {
+            this.body.push(item);
+          }
                   
-                  //img.classList.add("p-0");
-                
+          if(this.isCollapsed && k !="title"){
+            item.style.display = "none";
+          }
 
-                if (v) {
-                  img.src = "./img/" + data.image;
-                }
-                else{
-                  img.src = "https://via.placeholder.com/320x180?text=TEXT";
+          listGroup.appendChild(item);
 
-                }
+          //console.log(k)
+          //console.log(v)
+      }
+      //<--
 
-                item.append(new CanvasElement(data));
-
-                this.image = item;
-                
-                //item.append(img);
-                
-            }
-            else{
-                if (k == "link") {
-                    item = document.createElement("a");
-                    item.classList.add("text-truncate");
-
-                    item.classList.add("list-group-item");
-                    item.classList.add("list-group-item-action");
-    
-                    item.target = "_blank";
-                    item.href = v;
-                }
-
-                if (k != "link") {
-                    item.classList.add("disabled");
-                    item.classList.add("text-dark");
-                }
-
-                
-            }
-            
-            
-            
-            if (k != "link") {
-                //item.classList.add("bg-light");
-                item.classList.add("m-0");
-                item.classList.add("list-group-item");
-                item.classList.add("list-group-item-action");
-
-            }
-            
-            if (k == "title") {
-                
-            }
-            else if (k == "image") {
-                
-            }
-            else{
-                let uc = k.charAt(0).toUpperCase() + k.slice(1, k.length); // First letter to uppercase
-                item.innerHTML = "<small class=''><b>" + uc + ":</b></small><br/>";
-                item.innerHTML += v;
-
-            }
-
-            if (k != "title" && k != "image") {
-              this.body.push(item);
-            }
-                    
-
-            listGroup.appendChild(item);
-
-
-            //console.log(k)
-            //console.log(v)
-        }
-        //<--
-
-        this.appendChild(listGroup);
-
+      this.appendChild(listGroup);
     }
 
     update(){
 
-
-
+      
+      this.render()
    
 
     }
@@ -809,13 +845,42 @@ class ProjectElement extends HTMLDivElement{
 
       //console.log("collapse")
       //console.log(this.isCollapsed)
-
+      this.update()
     }
     
 }
 customElements.define('project-element', ProjectElement, {extends: 'div'});
 
+class CaretDowmElement{
+
+  constructor(){
+    let svg = document.createElement("svg")
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
+    svg.setAttribute("width", "16")
+    svg.setAttribute("height", "16")
+    svg.setAttribute("fill", "red")
+    svg.setAttribute("viewbox", "0 0 16 16")
+    svg.classList.add("bi", "bi-caret-down")
+
+    
+    let path = document.createElement("path")
+    path.setAttribute("d", "M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659")
+   
+    svg.appendChild(path)
+
+    return svg
+
+  }
+
+}
 
 
+/*
+
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
+</svg>
+
+*/
 
 

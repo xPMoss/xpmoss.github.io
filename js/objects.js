@@ -46,14 +46,6 @@ let projects = [
         link:"https://xpmoss.github.io/threedcube/"
     },
     {
-        title:"My webpage",
-        image:"xpm.jpg",
-        techniques:"Javascript, html, css",
-        info:"My webpage",
-        link:"https://xpm.one/"
-
-    },
-    {
         title:"Turbosquid",
         image:"ts.jpg",
         techniques:"3D-graphics, modelling, texturing, rendering",
@@ -67,3 +59,22 @@ let projects = [
 
 ]
 
+
+
+
+/*
+
+
+    {
+        title:"My webpage",
+        image:"xpm.jpg",
+        techniques:"Javascript, html, css",
+        info:"My webpage",
+        link:"https://xpm.one/"
+
+    }
+
+
+
+
+*/
