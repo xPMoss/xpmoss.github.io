@@ -22,7 +22,10 @@ function start(){
   projects = sortByTitle(projects)
   for (const project of projects) {
     let col = new ProjectElement(project);
-    row.appendChild(col);
+    if(project.show){
+      row.appendChild(col);
+    }
+    
       
   }
 

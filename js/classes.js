@@ -205,7 +205,9 @@ class CanvasElement extends HTMLCanvasElement{
       this.ts(ctx);
     }
 
-
+    if (data.title == "Calender") {
+      this.calender(ctx);
+    }
     
     
 
@@ -214,7 +216,32 @@ class CanvasElement extends HTMLCanvasElement{
 
   }
 
+  calender(ctx){
+    // BG
+    ctx.fillStyle = this.colors("HSL", "GREY", 0, 100);
+    ctx.fillRect(0, 0, this.width, this.height);
 
+    let margin = this.width*0.02;
+
+    // Line 1
+    ctx.fillStyle = this.colors("HSL", "GREY", 0, 85);
+    ctx.fillRect(this.width/6 + margin, 0 + margin*2, this.width/6 - margin*1.5, this.height/5 - margin*2);
+
+    ctx.fillStyle = this.colors("HSL", "GREY", 0, 85);
+    ctx.fillRect(this.width/6*2 + margin, 0 + margin*2, this.width/6 - margin*1.5, this.height/5 - margin*2);
+
+    ctx.fillStyle = this.colors("HSL", "GREY", 0, 85);
+    ctx.fillRect(this.width/6*3 + margin, 0 + margin*2, this.width/6 - margin*1.5, this.height/5 - margin*2);
+
+    ctx.fillStyle = this.colors("HSL", "GREY", 0, 85);
+    ctx.fillRect(this.width/6*4 + margin, 0 + margin*2, this.width/6 - margin*1.5, this.height/5 - margin*2);
+
+    // Line 2
+    ctx.fillStyle = this.colors("HSL", "GREY", 0, 80);
+    ctx.fillRect(0 + margin*4, this.height/4 + margin , this.width - margin*8, this.height/1.4 - margin*4);
+
+   
+  }
 
   al(ctx){
     // BG
