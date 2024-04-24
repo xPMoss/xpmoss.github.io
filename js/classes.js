@@ -341,7 +341,7 @@ class CanvasElement extends HTMLCanvasElement{
       // X
       for (let i = -1; i < 10; i++) {
         let x = this.height/3.5 * i;
-        console.log(x)
+        //console.log(x)
 
         ctx.beginPath();
         ctx.moveTo(0, x);
@@ -616,6 +616,7 @@ class ProjectElement extends HTMLDivElement{
         this.classList.add("col-lg-4");
         this.classList.add("col-xl-3");
         this.classList.add("p-0", "m-0")
+        this.classList.add("pe-sm-4", "m-0")
         this.classList.add("mb-4");
         this.id = this.title;
 
@@ -643,6 +644,9 @@ class ProjectElement extends HTMLDivElement{
       //-->
       let item;
 
+      let titleElement
+      let imageElement
+
       for (let [k, v] of Object.entries(data)) {
           let figure = document.createElement("figure");
 
@@ -666,7 +670,7 @@ class ProjectElement extends HTMLDivElement{
               row.classList.add("justify-content-between");
 
               let header = document.createElement("h4");
-              header.classList.add("col-10");
+              header.classList.add("col-auto");
               header.classList.add("text-truncate");
               header.innerHTML = v;
 
@@ -676,19 +680,17 @@ class ProjectElement extends HTMLDivElement{
               closeBtn.classList.add("rounded");
               closeBtn.style.cursor = "pointer"
               if (this.isCollapsed) {
-                let caretUp = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 10">
-                
-                <path d="M3.204 11h9.592L8 5.519zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659" />
-              </svg>`
+                let caretUp = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 32 28">
+                                <path d="M3.204 11h9.592L8 5.519zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659" transform="scale(2,2)"/>
+                              </svg>`
 
                 closeBtn.innerHTML = caretUp
               }
               else{
                 
                 let caretDown = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" stroke="" viewbox="0 0 32 28" class="bi bi-caret-down">
-                
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" transform="scale(2,2)"></path>
-                </svg>`
+                                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" transform="scale(2,2)"></path>
+                                </svg>`
 
                 closeBtn.innerHTML = caretDown
               }
@@ -722,6 +724,7 @@ class ProjectElement extends HTMLDivElement{
             row.append(closeBtn)
             item.append(row)
             
+            titleElement = item
 
           }
           else if (k == "image") {
@@ -748,7 +751,7 @@ class ProjectElement extends HTMLDivElement{
               item.append(new CanvasElement(data));
 
               this.image = item;
-              
+              imageElement = item
               //item.append(img);
               
           }
@@ -809,6 +812,10 @@ class ProjectElement extends HTMLDivElement{
           //console.log(v)
       }
       //<--
+
+      if(this.isCollapsed){
+        titleElement.classList.add("rounded-bottom")
+      }
 
       this.appendChild(listGroup);
     }
