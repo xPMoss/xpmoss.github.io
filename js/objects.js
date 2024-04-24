@@ -15,7 +15,7 @@ let projects = [
         image:"ld.jpg",
         techniques:"Javascript, html, css",
         info:"Coding with Html, Css & Javascript. Testing some filtering code",
-        link:"https://xpmoss.github.io/ld/"
+        link:"https://github.com/xPMoss/link-database-client"
     },
     {
         title:"The Movie App",
@@ -23,6 +23,13 @@ let projects = [
         techniques:"Javascript, html, css",
         info:"Coding with Html, Css & Javascript. A movie website",
         link:"https://xpmoss.github.io/tma/"
+    },
+    {
+        title:"The Movie Service",
+        image:"tms.jpg",
+        techniques:"Angular, TypeScript, html, css",
+        info:"Coding with Angular. A movie website",
+        link:"https://the-movie-service.web.app/"
     },
     {
         title:"Tree view",
@@ -52,6 +59,22 @@ let projects = [
         info:"My turbosquid page",
         link:"https://www.turbosquid.com/Search/Artists/wemg?referral=wemg"
 
+    },
+    {
+        title:"JavaScript Mario",
+        image:"js-mario.jpg",
+        techniques:"Javascript, html, css",
+        info:"A mario game made with JavaScript and canvas, very W.I.P",
+        link:"https://github.com/xPMoss/js-mario"
+
+    },
+    {
+        title:"Calender",
+        image:"calender.jpg",
+        techniques:"Angular, TypeScript, html, css",
+        info:"A calender made in Angular. Keep track of worked hours",
+        link:"https://github.com/xPMoss/calender-client"
+
     }
 
 
@@ -61,7 +84,7 @@ let projects = [
 
 
 
-
+//https://the-movie-service.web.app/
 /*
 
 
