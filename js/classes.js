@@ -210,10 +210,33 @@ class CanvasElement extends HTMLCanvasElement{
     }
     
     
-
+    if (data.title == "The Movie Service") {
+      this.tms(ctx);
+    }
+    
     
 
 
+  }
+
+  tms(ctx){
+    // BG
+    ctx.fillStyle = this.colors("HSL", "GREY", 0, 50);
+    ctx.fillRect(0, 0, this.width, this.height);
+
+    let margin = this.width*0.02;
+
+    ctx.fillStyle = this.colors("HSL", "GREY", 0, 80);
+    ctx.fillRect(0, 0, this.width, this.height/8);
+
+    // Line 1
+   
+
+    // Line 2
+    ctx.fillStyle = this.colors("HSL", "GREY", 0, 90);
+    ctx.fillRect(0 + margin*4, this.height/8 + margin*2 , this.width - margin*8, this.height/1.4 - margin*2);
+
+   
   }
 
   calender(ctx){
