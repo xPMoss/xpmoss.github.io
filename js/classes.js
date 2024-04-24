@@ -666,7 +666,6 @@ class ProjectElement extends HTMLDivElement{
               let row = document.createElement("div");
               row.classList.add("row");
               row.classList.add("pe-2");
-              row.classList.add("text-truncate");
               row.classList.add("justify-content-between");
 
               let header = document.createElement("h4");
