@@ -1,9 +1,7 @@
 
 
 
-
-
-
+//
 class CanvasElement extends HTMLCanvasElement{
 
   ctx = this.getContext('2d');
@@ -162,7 +160,7 @@ class CanvasElement extends HTMLCanvasElement{
     // Styles
     this.style.border = "1px solid " + this.colors("HSL", "GREY", 0, 90);
 
-    console.log(this.width + "x" + this.height)
+    //console.log(this.width + "x" + this.height)
 
     this.draw(data);
 
@@ -404,7 +402,7 @@ class CanvasElement extends HTMLCanvasElement{
       // Y
       for (let i = -0.5; i < 10; i++) {
         let x = this.height/3.5 * i;
-        console.log(x)
+        //console.log(x)
 
         ctx.beginPath();
         ctx.moveTo(x, 0);
@@ -634,22 +632,26 @@ class CanvasElement extends HTMLCanvasElement{
   
 
 }
-customElements.define('canvas-element', CanvasElement, {extends: 'canvas'});
+customElements.define('canvas-element', CanvasElement, {extends: 'canvas'})
 
 
+
+//
 class ProjectElement extends HTMLDivElement{
-    header;
-    body = [];
-    image;
+    header
+    body = []
+    image
 
-    imgSrc;
+    imgSrc
 
-    techniques;
-    info;
-    link;
-    title;
+    techniques
+    info
+    link
+    title
 
-    isCollapsed = false;
+    show
+
+    isCollapsed = false
 
     constructor(data){
         super(); // always call super() first in the constructor.
@@ -660,6 +662,8 @@ class ProjectElement extends HTMLDivElement{
         this.link = data.link;
         this.image = data.image
         this.imgSrc = data.image
+
+        this.show = data.show
 
         this.classList.add("col-sm-12");
         this.classList.add("col-md-6");
@@ -905,8 +909,11 @@ class ProjectElement extends HTMLDivElement{
     }
     
 }
-customElements.define('project-element', ProjectElement, {extends: 'div'});
+customElements.define('project-element', ProjectElement, {extends: 'div'})
 
+
+
+//
 class CaretDowmElement{
 
   constructor(){
@@ -931,12 +938,721 @@ class CaretDowmElement{
 }
 
 
-/*
 
+/*
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
   <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
 </svg>
-
 */
+
+
+
+// Navigation Element
+class NavigationContentElement extends HTMLDivElement{
+  previousPage
+  currentPage
+
+  constructor(){
+    super()
+
+    this.id = "navigation-element"
+    this.classList.add("container-fluid")
+    this.classList.add("p-0")
+    this.classList.add("m-0", "mb-4")
+    this.classList.add("sticky-top")
+    this.classList.add("bg-light")
+
+    this.update()
+    this.render()
+
+    this.setupSwipeNavigation()
+    
+    this.addEventListener("ChangeEvent", ()=>{
+      this.update()
+
+    })
+
+  }
+
+  setupSwipeNavigation(){
+    let swipping = false
+    let touchstartX = 0
+    let touchendX = 0
+        
+    
+    document.addEventListener('touchstart', e => {
+      swipping = true
+      touchstartX = e.changedTouches[0].screenX
+    })
+    
+    document.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX
+
+      if (touchendX < touchstartX){
+        console.log('swiped left!')
+        if(this.currentPage == "home"){
+          this.previousPage = "home"
+          localStorage.setItem('previousPage', "home");
+
+          this.currentPage = "projects"
+          localStorage.setItem('currentPage', "projects");
+
+          document.body.dispatchEvent(NavigateEvent);
+          
+        }
+        if(this.currentPage == "projects"){
+          this.previousPage = "projects"
+          localStorage.setItem('previousPage', "projects");
+
+          this.currentPage = "links"
+          localStorage.setItem('currentPage', "links");
+
+          document.body.dispatchEvent(NavigateEvent);
+
+        }
+
+
+      }
+      
+      if (touchendX > touchstartX){
+          console.log('swiped right!')
+
+          if(this.currentPage == "links"){
+            this.previousPage = "links"
+            localStorage.setItem('previousPage', "links");
+
+            this.currentPage = "projects"
+            localStorage.setItem('currentPage', "projects");
+
+            document.body.dispatchEvent(NavigateEvent);
+            
+          }
+          if(this.currentPage == "projects"){
+            this.previousPage = "projects"
+            localStorage.setItem('previousPage', "projects");
+
+            this.currentPage = "home"
+            localStorage.setItem('currentPage', "home");
+
+            document.body.dispatchEvent(NavigateEvent);
+  
+          }
+
+            
+      } 
+
+      swipping = false
+
+      console.log(this.previousPage +"=>"+ this.currentPage)
+      //console.log('swipping', swipping)
+    })
+
+
+  }
+
+  render(){
+    this.innerHTML = ""
+
+    let row = document.createElement("div") 
+    row.classList.add("row")
+    row.classList.add("p-0")
+    row.classList.add("m-0")
+
+    let linkObjects = [
+      {
+        title: "Home",
+        page: "home"
+      },
+      {
+        title: "Projects",
+        page: "projects"
+      },
+      {
+        title: "Links",
+        page: "links"
+      },
+    ]
+
+    for (const lo of linkObjects) {
+      let li = document.createElement("div")
+      li.classList.add("col")
+      li.classList.add("p-0", "p-2")
+      li.classList.add("m-0")
+      li.classList.add("rounded-1", "text-center", "fs-4", "user-select-none")
+      li.role = "button"
+
+      li.innerText = lo.title
+      
+      li.addEventListener("click",()=>{
+        console.log(lo.page)
+
+        localStorage.setItem('currentPage', lo.page);
+
+        if(this.currentPage != lo.page){
+          localStorage.setItem('previousPage', this.currentPage);
+          document.body.dispatchEvent(NavigateEvent);
+        }
+
+      })
+
+
+      //
+      if(this.currentPage == lo.page){
+        li.classList.add("border", "text-decoration-underline", "active")
+      }
+
+      row.appendChild(li)
+
+
+    }
+
+    this.appendChild(row)
+   
+
+  }
+
+  update(){
+    this.previousPage = localStorage.getItem('previousPage')
+    this.currentPage = localStorage.getItem('currentPage')
+
+    if(this.currentPage == null){
+      this.currentPage = "home"
+
+    }
+    
+  }
+
+
+
+}
+customElements.define('navigation-content-element', NavigationContentElement, {extends: 'div'})
+
+
+
+// Header Element
+class HeaderContentElement extends HTMLDivElement{
+
+  constructor(){
+    super()
+
+    this.id = "header-content"
+    this.classList.add("container-fluid")
+    this.classList.add("p-0", "px-4", "pb-4", "pt-3")
+    this.classList.add("m-0")
+
+    this.render()
+
+    this.addEventListener("ChangeEvent", ()=>{
+      this.update()
+
+    })
+
+  }
+
+  render(){
+    this.innerHTML = ""
+
+    let mainRow = document.createElement("div")
+    mainRow.classList.add("row")
+
+    let avatarCol = document.createElement("div")
+    avatarCol.classList.add("col-3", "col-md-2", "col-lg-1")
+    avatarCol.classList.add("p-0")
+    avatarCol.classList.add("m-0")
+
+    let avatarImg = document.createElement("img")
+    avatarImg.classList.add("img-fluid", "rounded-circle", "border", "bg-blue")
+    avatarImg.src = "img\\avatar_geometric_512.png"
+
+    let mainCol = document.createElement("div")
+    mainCol.classList.add("col")
+    mainCol.classList.add("p-0", "ps-4")
+    mainCol.classList.add("m-0")
+
+    avatarCol.appendChild(avatarImg)
+    mainRow.appendChild(avatarCol, mainCol)
+    this.appendChild(mainRow)
+
+  }
+
+  update(){
+    this.render()
+
+    
+  }
+
+
+
+}
+customElements.define('header-content-element', HeaderContentElement, {extends: 'div'})
+
+
+
+// Main Element
+class MainContentElement extends HTMLDivElement{
+
+  currentPage
+  pages = []
+
+  constructor(data){
+    super()
+
+    this.id = "main-content"
+    this.classList.add("container")
+    this.classList.add("px-4")
+    this.classList.add("mb-4")
+
+    this.createHome()
+    this.createProjects()
+    this.createLinks()
+
+    this.update()
+    this.render()
+
+    this.addEventListener("ChangeEvent", ()=>{
+      this.update()
+
+    })
+
+  }
+
+  createHome(){
+    let row = document.createElement("div")
+    row.classList.add("row")
+    row.classList.add("p-0")
+    row.classList.add("m-0")
+    row.classList.add("d-none")
+
+    let col = document.createElement("div")
+    col.classList.add("col")
+    col.classList.add("p-0")
+    col.classList.add("m-0")
+
+    col.innerHTML = 
+    `
+    My name is Patrik and I am a web- and applications- developer with focus on JavaScript, HTML, CSS and C#.Net.
+    <br/>
+    `
+
+    col.append(
+      createBadge(
+        {logo:"Csharp", text:"Csharp", color:"512BD4", logoColor:"white", classes:["me-2"], link:false, url:""}
+      )
+    )
+    col.append(createBadge({logo:"typescript", text:"typescript", color:"3178C6", logoColor:"white", classes:["me-2"], link:false, url:""}))
+    col.append(createBadge({logo:"JavaScript", text:"JavaScript", color:"F7DF1E", logoColor:"black", classes:["me-2"], link:false, url:""}))
+    col.append(createBadge({logo:"html5", text:"html", color:"E34F26", logoColor:"white", classes:["me-2"], link:false, url:""}))
+    col.append(createBadge({logo:"css3", text:"css", color:"1572B6", logoColor:"white", classes:[], link:false, url:""}))
+
+    col.innerHTML += 
+    `
+    <br/><br/>
+    I love to code some quick functions in Javascript, add some html and css for webb apps, or play with some classes and methods in C#.Net.
+
+    <br/><br/>
+    Check out the projects section for some of my coding and animation projects and experiements.
+
+    <br/><br/>
+    I have also been working with animation and graphics over the past 10 years.
+    <br/>
+    My main tools for animations are Cinema 4D, After Effects and Photoshop.
+    `
+
+    row.append(col)
+
+    this.pages.push(row)
+
+  }
+
+  createProjects(){
+    console.log("projects")
+
+    let row = document.createElement("div")
+    row.classList.add("row")
+    row.classList.add("p-0")
+    row.classList.add("m-0")
+    row.classList.add("d-none")
+  
+    let desc = document.createElement("div")
+    desc.classList.add("row")
+    desc.classList.add("p-0")
+    desc.classList.add("m-0", "mb-4")
+
+    let content
+    content = `<span>On this page you can se a collection of work I have done over the years as an developer, 3D-artist and motion designer.</span><br/>
+    <small>(Click on the images to view the content, or click on the links to get more information)</small>
+    <br/><br/>`
+    desc.innerHTML = content
+
+    row.appendChild(desc)
+
+    let proj = document.createElement("div")
+    proj.classList.add("row")
+    proj.classList.add("p-0")
+    proj.classList.add("m-0")
+
+    projectsData = sortByTitle(projectsData)
+    for (const project of projectsData) {
+      let col = new ProjectElement(project);
+      projects.push(col)
+
+      if(project.show){
+        proj.appendChild(col)
+
+      }
+        
+    }
+    row.appendChild(proj)
+
+
+
+    this.pages.push(row)
+
+  }
+
+  createLinks(){
+    console.log("projects")
+
+    let row = document.createElement("div")
+    row.classList.add("row")
+    row.classList.add("p-0")
+    row.classList.add("m-0")
+    row.classList.add("d-none")
+
+    let col = document.createElement("div")
+    col.classList.add("col")
+    col.classList.add("p-0")
+    col.classList.add("m-0")
+    col.innerHTML = `Links<br/><br/>`
+
+    
+
+
+    col.append(
+      createBadge(
+        {
+          logo:"LinkedIn", 
+          text:"LinkedIn", 
+          color:"0A66C2", 
+          logoColor:"white", 
+          classes:["me-2"],
+          link:true,
+          url:"https://www.linkedin.com/in/patrikmossbergg"
+        }
+      )
+    )
+
+    col.append(
+      createBadge(
+        {
+          logo:"GitHub", 
+          text:"GitHub", 
+          color:"000", 
+          logoColor:"white", 
+          classes:["me-2"],
+          link:true,
+          url:"https://github.com/xPMoss"
+        }
+      )
+    )
+
+    col.append(
+      createBadge(
+        {
+          logo:"turbosquid", 
+          text:"turbosquid", 
+          color:"FF8135", 
+          logoColor:"white", 
+          classes:["me-2"],
+          link:true,
+          url:"https://www.turbosquid.com/Search/Artists/wemg?referral=wemg"
+        }
+      )
+    )
+
+    col.append(
+      createBadge(
+        {
+          logo:"vimeo", 
+          text:"vimeo", 
+          color:"1AB7EA", 
+          logoColor:"white", 
+          classes:["me-2"],
+          link:true,
+          url:"https://vimeo.com/cgfx"
+        }
+      )
+    )
+
+    col.append(
+      createBadge(
+        {
+          logo:"behance", 
+          text:"behance", 
+          color:"1769FF", 
+          logoColor:"white", 
+          classes:["me-2"],
+          link:true,
+          url:"https://www.behance.net/xpm35"
+        }
+      )
+    )
+
+    row.appendChild(col)
+
+
+
+    this.pages.push(row)
+  }
+
+
+
+  render(){
+
+    // Reset
+    this.innerHTML = ""
+    for(const page of this.pages){
+      page.classList.add("d-none")
+
+    }
+
+    // Create
+    for(const page of this.pages){
+      this.appendChild(page)
+
+    }
+
+    let currentPage
+    let currentPageIndex
+
+    let previousPage
+    let previousPageIndex
+
+    // Show
+    if (this.currentPage=="home") {
+      currentPage = this.pages[0]
+      currentPageIndex = 0
+    }
+
+    if(this.currentPage=="projects"){
+      currentPage = this.pages[1]
+      currentPageIndex = 1
+    }
+
+    if(this.currentPage=="links"){
+      currentPage = this.pages[2]
+      currentPageIndex = 2
+    }
+
+    if (this.previousPage=="home") {
+      previousPage = this.pages[0]
+      previousPageIndex = 0
+    }
+
+    if(this.previousPage=="projects"){
+      previousPage = this.pages[1]
+      previousPageIndex = 1
+    }
+
+    if(this.previousPage=="links"){
+      previousPage = this.pages[2]
+      previousPageIndex = 2
+    }
+
+    let animData = {
+      currentPage:currentPage,
+      currentPageIndex:currentPageIndex,
+      previousPage:previousPage,
+      previousPageIndex:previousPageIndex
+    }
+
+    if( currentPage){
+
+      if (previousPage) {
+        let animout = this.animateOut(animData)
+
+        animout.then((data)=>{
+          data.finished.then((data)=>{
+            let animin = this.animateIn(animData)
+          })
+          
+    
+        })
+        
+      }
+
+      if (!previousPage) {
+        currentPage.classList.remove("d-none")
+
+      }
+      
+     
+    }
+    
+    
+    
+  }
+
+  async animateIn(animData){
+    let object = animData.currentPage
+
+    object.classList.remove("d-none")
+
+    let translateX
+
+    if (animData.previousPageIndex > animData.currentPageIndex) {
+      translateX = [
+        { transform: "translateX(-100%)", opacity: 0 },
+        { transform: "translateX(0)", opacity: 1 },
+      ];
+    }
+    else{
+      translateX = [
+        { transform: "translateX(100%)", opacity: 0 },
+        { transform: "translateX(0)", opacity: 1 },
+      ];
+    }
+     
+
+    const timing = {
+      duration: 200,
+      iterations: 1,
+    };
+
+    let anim = object.animate(translateX, timing)
+
+    anim.finished.then((data)=>{
+      //console.log("data", data)
+    })
+
+    return anim
+
+  }
+
+  async animateOut(animData){
+    let object = animData.previousPage
+
+    object.classList.remove("d-none")
+
+    let translateX
+
+    if (animData.previousPageIndex > animData.currentPageIndex) {
+      translateX = [
+        { transform: "translateX(0)", opacity: 1 },
+        { transform: "translateX(100%)", opacity: 0 },
+      ];
+    }
+    else{
+      translateX = [
+        { transform: "translateX(0)", opacity: 1 },
+        { transform: "translateX(-100%)", opacity: 0 },
+      ];
+    }
+
+
+    const timing = {
+      duration: 200,
+      iterations: 1,
+    };
+
+    let anim = object.animate(translateX, timing)
+
+    anim.finished.then((data)=>{
+      object.classList.add("d-none")
+
+    })
+
+    return anim
+    
+   
+  }
+
+  update(){
+    this.previousPage = localStorage.getItem('previousPage')
+    this.currentPage = localStorage.getItem('currentPage')
+
+    if(this.currentPage == null){
+      this.currentPage = "home"
+
+    }
+
+    if(this.currentPage=="projects"){
+      for (const project of projects) {
+       project.update()
+                
+      }
+  
+    }
+
+
+  }
+
+
+
+}
+customElements.define('main-content-element', MainContentElement, {extends: 'div'})
+
+
+
+// Footer Element
+class FooterContentElement extends HTMLDivElement{
+
+  constructor(){
+    super()
+
+    this.id = "footer-content"
+    this.classList.add("container-fluid")
+    this.classList.add("p-0")
+    this.classList.add("m-0")
+    this.classList.add("fixed-bottom")
+    this.classList.add("bg-light")
+
+    this.render()
+
+    this.addEventListener("ChangeEvent", ()=>{
+      this.update()
+
+    })
+
+  }
+
+  render(){
+    this.innerHTML = ""
+
+    let row = document.createElement("div") 
+    row.classList.add("row")
+    row.classList.add("p-0")
+    row.classList.add("m-0")
+    
+    let cols = ["1", "2", "3"]
+    for (const co of cols) {
+      let c = document.createElement("div") 
+      c.classList.add("col")
+      c.classList.add("p-0", "p-2")
+      c.classList.add("m-0")
+      c.classList.add("rounded-1", "text-center", "fs-6", "user-select-none")
+      c.role = "button"
+
+      c.innerText = co
+
+      row.append(c)
+
+    }
+    
+
+    this.append(row)
+  }
+
+  update(){
+    this.render()
+
+
+    
+  }
+
+
+
+}
+customElements.define('footer-content-element', FooterContentElement, {extends: 'div'})
 
 
