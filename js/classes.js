@@ -1279,24 +1279,38 @@ class MainContentElement extends HTMLDivElement{
       My name is Patrik and I am a web- and applications- developer with focus on JavaScript, HTML, CSS and C#.Net.
     </div>
     `
-    let badgeDiv = document.createElement("div")
-    for (const bdl of badgeData_languages) {
-      badgeDiv.append(
-        createBadge(bdl)
+    col.innerHTML += `<h2>Languages</h2>`
+    let badgeDiv_languages = document.createElement("div")
+    for (const bd of badgeData_languages) {
+      badgeDiv_languages.append(
+        createBadge(bd)
       )
     
     }
-
-    col.append(badgeDiv)
-
+    col.append(badgeDiv_languages)
     col.innerHTML += `<br/>`
 
     col.innerHTML += 
     `
-    <div>
+    <div class="p-0 pb-2 m-0">
       I love to code some quick functions in Javascript, add some html and css for webb apps, or play with some classes and methods in C#.Net.
+    </div>
+    `
 
-      <br/><br/>
+    col.innerHTML += `<h2>Frameworks</h2>`
+    let badgeDiv_frameworks = document.createElement("div")
+    for (const bd of badgeData_frameworks) {
+      badgeDiv_frameworks.append(
+        createBadge(bd)
+      )
+    
+    }
+    col.append(badgeDiv_frameworks)
+    col.innerHTML += `<br/>`
+
+    col.innerHTML += 
+    `
+    <div class="p-0 pb-2 m-0">
       Check out the projects section for some of my coding- and animation- projects and experiements.
 
       <br/><br/>
@@ -1305,6 +1319,38 @@ class MainContentElement extends HTMLDivElement{
       My main tools for animations are Cinema 4D, After Effects and Photoshop.
     </div>
     `
+
+    col.innerHTML += `<h2>Tools</h2>`
+    let badgeDiv_dev_tools = document.createElement("div")
+    for (const bd of badgeData_tools) {
+      if(bd.type == "dev_tool"){
+        badgeDiv_dev_tools.append(
+          createBadge(bd)
+        )
+      }
+    }
+    col.append(badgeDiv_dev_tools)
+
+    let badgeDiv_dev_platform = document.createElement("div")
+    for (const bd of badgeData_tools) {
+      if(bd.type == "dev_platform"){
+        badgeDiv_dev_platform.append(
+          createBadge(bd)
+        )
+      }
+    }
+    col.append(badgeDiv_dev_platform)
+
+    let badgeDiv_anim_tool = document.createElement("div")
+    for (const bd of badgeData_tools) {
+      if(bd.type == "anim_tool"){
+        badgeDiv_anim_tool.append(
+          createBadge(bd)
+        )
+      }
+    }
+    col.append(badgeDiv_anim_tool)
+    col.innerHTML += `<br/>`
 
     row.append(col)
 

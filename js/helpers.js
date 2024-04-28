@@ -25,7 +25,11 @@ let createBadge = (data)=>{
     let img = document.createElement("img")
 
     let badge = "https://img.shields.io/badge/"
-    badge += data.text
+    
+    if(data.style == "full"){
+        badge += data.text
+    }
+    
     badge += "-" + data.color
     badge += "?style=for-the-badge"
     badge += "&logo=" + data.logo

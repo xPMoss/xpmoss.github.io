@@ -1128,45 +1128,50 @@ let linksData = [
         text:"LinkedIn", 
         color:"0A66C2", 
         logoColor:"white", 
-        classes:["me-2", "mb-2"],
+        classes:["me-2", "mb-2", "rounded-1"],
         link:true,
         url:"https://www.linkedin.com/in/patrikmossbergg",
+		style:"full"
     },
     {
         logo:"GitHub", 
         text:"GitHub", 
         color:"000", 
         logoColor:"white", 
-        classes:["me-2", "mb-2"],
+        classes:["me-2", "mb-2", "rounded-1"],
         link:true,
-        url:"https://github.com/xPMoss"
+        url:"https://github.com/xPMoss",
+		style:"full"
     },
     {
         logo:"turbosquid", 
         text:"turbosquid", 
         color:"FF8135", 
         logoColor:"white", 
-        classes:["me-2", "mb-2"],
+        classes:["me-2", "mb-2", "rounded-1"],
         link:true,
-        url:"https://www.turbosquid.com/Search/Artists/wemg?referral=wemg"
+        url:"https://www.turbosquid.com/Search/Artists/wemg?referral=wemg",
+		style:"full"
     },
     {
         logo:"vimeo", 
         text:"vimeo", 
         color:"1AB7EA", 
         logoColor:"white", 
-        classes:["me-2", "mb-2"],
+        classes:["me-2", "mb-2", "rounded-1"],
         link:true,
-        url:"https://vimeo.com/cgfx"
+        url:"https://vimeo.com/cgfx",
+		style:"full"
     },
     {
         logo:"behance", 
         text:"behance", 
         color:"1769FF", 
         logoColor:"white", 
-        classes:["mb-2"],
+        classes:["mb-2", "rounded-1"],
         link:true,
-        url:"https://www.behance.net/xpm35"
+        url:"https://www.behance.net/xpm35",
+		style:"full"
     }
 ]
 
@@ -1176,30 +1181,189 @@ let badgeData_languages = [
         text:"Csharp", 
         color:"512BD4", 
         logoColor:"white", 
-        classes:["me-2", "mb-2"], 
+        classes:["me-2", "mb-2", "rounded-1"], 
         link:false, 
         url:"",
+		style:"full"
     },
-    {logo:"typescript", text:"typescript", color:"3178C6", logoColor:"white", classes:["me-2", "mb-2"], link:false, url:""},
-    {logo:"JavaScript", text:"JavaScript", color:"F7DF1E", logoColor:"black", classes:["me-2", "mb-2"], link:false, url:""},
-    {logo:"html5", text:"html", color:"E34F26", logoColor:"white", classes:["me-2", "mb-2"], link:false, url:""},
-    {logo:"css3", text:"css", color:"1572B6", logoColor:"white", classes:["mb-2"], link:false, url:""}
+    {
+		logo:"typescript", 
+		text:"typescript", 
+		color:"3178C6", 
+		logoColor:"white", 
+		classes:["me-2", "mb-2", "rounded-1"], 
+		link:false, 
+		url:"",
+		style:"full"
+	},
+    {
+		logo:"JavaScript", 
+		text:"JavaScript", 
+		color:"F7DF1E", 
+		logoColor:"black", 
+		classes:["me-2", "mb-2", "rounded-1"], 
+		link:false, 
+		url:"",
+		style:"full"
+	},
+    {
+		logo:"html5", 
+		text:"html", 
+		color:"E34F26", 
+		logoColor:"white", 
+		classes:["me-2", "mb-2", "rounded-1"], 
+		link:false, 
+		url:"",
+		style:"full"
+	},
+    {
+		logo:"css3", 
+		text:"css", 
+		color:"1572B6", 
+		logoColor:"white", 
+		classes:["mb-2", "rounded-1"], 
+		link:false, 
+		url:"",
+		style:"full"
+	}
 
+]
+
+let badgeData_frameworks = [
+    {
+        logo:".NET", 
+        text:".NET", 
+        color:"512BD4", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		style:"full"
+    },
+	{
+        logo:"Angular", 
+        text:"Angular", 
+        color:"de002d", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		style:"full"
+    },
+	{
+        logo:"bootstrap", 
+        text:"bootstrap", 
+        color:"7952B3", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		style:"full"
+    },
+	{
+        logo:"jquery", 
+        text:"jquery", 
+        color:"0769AD", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		style:"full"
+    },
+	{
+        logo:"node.js", 
+        text:"nodedotjs", 
+        color:"339933", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		style:"full"
+    },
+	{
+        logo:"npm", 
+        text:"npm", 
+        color:"CB3837", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		style:"full"
+    },
+]
+
+let badgeData_tools = [
+    {
+        logo:"visualstudiocode", 
+        text:"Visual_studio_code", 
+        color:"007ACC", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		type:"dev_tool",
+		style:"full"
+    },
+	{
+        logo:"visualstudio", 
+        text:"visual_studio", 
+        color:"5C2D91", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		type:"dev_tool",
+		style:"full"
+    },
+	{
+        logo:"azuredevops", 
+        text:"DevOps", 
+        color:"0078D7", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		type:"dev_platform",
+		style:"full"
+    },
+	{
+        logo:"firebase", 
+        text:"firebase", 
+        color:"F7DF1E", 
+        logoColor:"black", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		type:"dev_platform",
+		style:"full"
+    },
+	{
+        logo:"powerautomate", 
+        text:"power_automate", 
+        color:"0066FF", 
+        logoColor:"white", 
+        classes:["me-2", "mb-2", "rounded-1"], 
+        link:false, 
+        url:"",
+		type:"dev_platform",
+		style:"full"
+    },
 ]
 
 //https://the-movie-service.web.app/
 /*
 
 
-    {
-        title:"My webpage",
-        image:"xpm.jpg",
-        techniques:"Javascript, html, css",
-        info:"My webpage",
-        link:"https://xpm.one/"
+![devops](https://img.shields.io/badge/DevOps-0078D7?style=for-the-badge&logo=azuredevops&logoColor=white)
+![firebase](https://img.shields.io/badge/firebase-F7DF1E?style=for-the-badge&logo=firebase&logoColor=black)
+![powerautomate](https://img.shields.io/badge/power_automate-0066FF?style=for-the-badge&logo=powerautomate&logoColor=white)
 
-    }
-
+![cinema4d](https://img.shields.io/badge/Cinema_4D-011A6A?style=for-the-badge&logo=cinema4d&logoColor=white)
+![adobeaftereffects](https://img.shields.io/badge/After_Effects-9999FF?style=for-the-badge&logo=adobeaftereffects&logoColor=white)
+![adobeillustrator](https://img.shields.io/badge/Adobe_Illustrator-FF9A00?style=for-the-badge&logo=adobeillustrator&logoColor=white)
+![adobephotoshop](https://img.shields.io/badge/Adobe_Photoshop-31A8FF?style=for-the-badge&logo=adobephotoshop&logoColor=white)
+![adobepremierepro](https://img.shields.io/badge/Adobe_Premiere_Pro-9999FF?style=for-the-badge&logo=adobepremierepro&logoColor=white)
+![adobexd](https://img.shields.io/badge/Adobe_XD-FF61F6?style=for-the-badge&logo=adobexd&logoColor=white)
 
 
 
