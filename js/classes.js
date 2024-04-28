@@ -977,12 +977,20 @@ class NavigationContentElement extends HTMLDivElement{
   setupSwipeNavigation(){
     let touchstartX = 0
     let touchendX = 0
+
+    let touchstartY = 0
+    let touchendY = 0
         
     let previousPageIndex
     let currentPageIndex
 
     document.addEventListener('touchstart', e => {
       //console.log("touchstart", e)
+      touchstartX = 0
+      touchendX = 0
+
+      touchstartY = 0
+      touchendY = 0
 
       switch (this.currentPage) {
         case 'home':
@@ -1000,16 +1008,22 @@ class NavigationContentElement extends HTMLDivElement{
       }
 
       touchstartX = e.changedTouches[0].screenX
-
+      touchstartY = e.changedTouches[0].screenY
     })
 
     document.addEventListener('touchend', e => {
       //console.log("touchend", e)
+      touchendX = e.changedTouches[0].screenX
+      touchendY = e.changedTouches[0].screenY
 
       let swipping = false
-      touchendX = e.changedTouches[0].screenX
+      let distanceX = Math.abs(touchstartX - touchendX)
+      let distanceY = Math.abs(touchstartY - touchendY)
 
-      if (touchendX < touchstartX){
+      console.log("distanceX", distanceX)
+      console.log("distanceY", distanceY)
+
+      if (touchendX < touchstartX && distanceX > 100 && distanceY < 100){
         //console.log('swiped left!')
 
         swipping = true
@@ -1036,7 +1050,7 @@ class NavigationContentElement extends HTMLDivElement{
 
       }
       
-      if (touchendX > touchstartX){
+      if (touchendX > touchstartX && distanceX > 100 && distanceY < 100){
           //console.log('swiped right!')
 
           swipping = true
@@ -1069,6 +1083,8 @@ class NavigationContentElement extends HTMLDivElement{
         swipping = false
   
       }
+
+      
       
       //console.log(this.previousPage +"=>"+ this.currentPage)
       //console.log('swipping', swipping)

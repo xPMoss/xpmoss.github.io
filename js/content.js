@@ -1128,7 +1128,7 @@ let linksData = [
         text:"LinkedIn", 
         color:"0A66C2", 
         logoColor:"white", 
-        classes:["me-2"],
+        classes:["me-2", "mb-2"],
         link:true,
         url:"https://www.linkedin.com/in/patrikmossbergg",
     },
@@ -1137,7 +1137,7 @@ let linksData = [
         text:"GitHub", 
         color:"000", 
         logoColor:"white", 
-        classes:["me-2"],
+        classes:["me-2", "mb-2"],
         link:true,
         url:"https://github.com/xPMoss"
     },
@@ -1146,7 +1146,7 @@ let linksData = [
         text:"turbosquid", 
         color:"FF8135", 
         logoColor:"white", 
-        classes:["me-2"],
+        classes:["me-2", "mb-2"],
         link:true,
         url:"https://www.turbosquid.com/Search/Artists/wemg?referral=wemg"
     },
@@ -1155,7 +1155,7 @@ let linksData = [
         text:"vimeo", 
         color:"1AB7EA", 
         logoColor:"white", 
-        classes:["me-2"],
+        classes:["me-2", "mb-2"],
         link:true,
         url:"https://vimeo.com/cgfx"
     },
@@ -1164,7 +1164,7 @@ let linksData = [
         text:"behance", 
         color:"1769FF", 
         logoColor:"white", 
-        classes:["me-2"],
+        classes:["mb-2"],
         link:true,
         url:"https://www.behance.net/xpm35"
     }
@@ -1176,14 +1176,14 @@ let badgeData_languages = [
         text:"Csharp", 
         color:"512BD4", 
         logoColor:"white", 
-        classes:["me-2"], 
+        classes:["me-2", "mb-2"], 
         link:false, 
         url:"",
     },
-    {logo:"typescript", text:"typescript", color:"3178C6", logoColor:"white", classes:["me-2"], link:false, url:""},
-    {logo:"JavaScript", text:"JavaScript", color:"F7DF1E", logoColor:"black", classes:["me-2"], link:false, url:""},
-    {logo:"html5", text:"html", color:"E34F26", logoColor:"white", classes:["me-2"], link:false, url:""},
-    {logo:"css3", text:"css", color:"1572B6", logoColor:"white", classes:[], link:false, url:""}
+    {logo:"typescript", text:"typescript", color:"3178C6", logoColor:"white", classes:["me-2", "mb-2"], link:false, url:""},
+    {logo:"JavaScript", text:"JavaScript", color:"F7DF1E", logoColor:"black", classes:["me-2", "mb-2"], link:false, url:""},
+    {logo:"html5", text:"html", color:"E34F26", logoColor:"white", classes:["me-2", "mb-2"], link:false, url:""},
+    {logo:"css3", text:"css", color:"1572B6", logoColor:"white", classes:["mb-2"], link:false, url:""}
 
 ]
 
