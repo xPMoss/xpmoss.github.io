@@ -1170,7 +1170,7 @@ let linksData = [
     }
 ]
 
-let badgeData = [
+let badgeData_languages = [
     {
         logo:"Csharp", 
         text:"Csharp", 

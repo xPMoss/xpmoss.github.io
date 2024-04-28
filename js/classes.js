@@ -975,78 +975,106 @@ class NavigationContentElement extends HTMLDivElement{
   }
 
   setupSwipeNavigation(){
-    let swipping = false
     let touchstartX = 0
     let touchendX = 0
         
-    
+    let previousPageIndex
+    let currentPageIndex
+
     document.addEventListener('touchstart', e => {
-      swipping = true
+      //console.log("touchstart", e)
+
+      switch (this.currentPage) {
+        case 'home':
+          currentPageIndex = 0
+          break;
+        case 'projects':
+          currentPageIndex = 1
+          break;
+        case 'links':
+          currentPageIndex = 2
+          break;
+        default:
+          break;
+
+      }
+
       touchstartX = e.changedTouches[0].screenX
+
     })
-    
+
     document.addEventListener('touchend', e => {
+      //console.log("touchend", e)
+
+      let swipping = false
       touchendX = e.changedTouches[0].screenX
 
       if (touchendX < touchstartX){
-        console.log('swiped left!')
-        if(this.currentPage == "home"){
-          this.previousPage = "home"
-          localStorage.setItem('previousPage', "home");
+        //console.log('swiped left!')
 
-          this.currentPage = "projects"
-          localStorage.setItem('currentPage', "projects");
+        swipping = true
 
-          document.body.dispatchEvent(NavigateEvent);
-          
+        switch (currentPageIndex) {
+          case 0:
+            this.previousPage = "home"
+            this.currentPage = "projects"
+            break;
+          case 1:
+            this.previousPage = "projects"
+            this.currentPage = "links"
+            break;
+          case 2:
+            this.previousPage = "links"
+            this.currentPage = "links"
+            break;
+          default:
+            break;
+  
         }
-        if(this.currentPage == "projects"){
-          this.previousPage = "projects"
-          localStorage.setItem('previousPage', "projects");
 
-          this.currentPage = "links"
-          localStorage.setItem('currentPage', "links");
-
-          document.body.dispatchEvent(NavigateEvent);
-
-        }
-
+        
 
       }
       
       if (touchendX > touchstartX){
-          console.log('swiped right!')
+          //console.log('swiped right!')
 
-          if(this.currentPage == "links"){
-            this.previousPage = "links"
-            localStorage.setItem('previousPage', "links");
+          swipping = true
 
-            this.currentPage = "projects"
-            localStorage.setItem('currentPage', "projects");
-
-            document.body.dispatchEvent(NavigateEvent);
-            
+          switch (currentPageIndex) {
+            case 0:
+              this.previousPage = "home"
+              this.currentPage = "home"
+              break;
+            case 1:
+              this.previousPage = "links"
+              this.currentPage = "home"
+              break;
+            case 2:
+              this.previousPage = "links"
+              this.currentPage = "projects"
+              break;
+            default:
+              break;
+    
           }
-          if(this.currentPage == "projects"){
-            this.previousPage = "projects"
-            localStorage.setItem('previousPage', "projects");
-
-            this.currentPage = "home"
-            localStorage.setItem('currentPage', "home");
-
-            document.body.dispatchEvent(NavigateEvent);
-  
-          }
-
             
       } 
 
-      swipping = false
-
-      console.log(this.previousPage +"=>"+ this.currentPage)
+      if(swipping){
+        localStorage.setItem('previousPage', this.previousPage);
+        localStorage.setItem('currentPage', this.currentPage);
+        document.body.dispatchEvent(NavigateEvent);
+  
+        swipping = false
+  
+      }
+      
+      //console.log(this.previousPage +"=>"+ this.currentPage)
       //console.log('swipping', swipping)
     })
 
+    
 
   }
 
@@ -1084,7 +1112,8 @@ class NavigationContentElement extends HTMLDivElement{
       li.innerText = lo.title
       
       li.addEventListener("click",()=>{
-        console.log(lo.page)
+
+        console.log("clicked!", lo.page)
 
         localStorage.setItem('currentPage', lo.page);
 
@@ -1230,32 +1259,35 @@ class MainContentElement extends HTMLDivElement{
 
     col.innerHTML = 
     `
-    My name is Patrik and I am a web- and applications- developer with focus on JavaScript, HTML, CSS and C#.Net.
-    <br/>
+    <div class="p-0 pb-2 m-0">
+      My name is Patrik and I am a web- and applications- developer with focus on JavaScript, HTML, CSS and C#.Net.
+    </div>
     `
-
-    col.append(
-      createBadge(
-        {logo:"Csharp", text:"Csharp", color:"512BD4", logoColor:"white", classes:["me-2"], link:false, url:""}
+    let badgeDiv = document.createElement("div")
+    for (const bdl of badgeData_languages) {
+      badgeDiv.append(
+        createBadge(bdl)
       )
-    )
-    col.append(createBadge({logo:"typescript", text:"typescript", color:"3178C6", logoColor:"white", classes:["me-2"], link:false, url:""}))
-    col.append(createBadge({logo:"JavaScript", text:"JavaScript", color:"F7DF1E", logoColor:"black", classes:["me-2"], link:false, url:""}))
-    col.append(createBadge({logo:"html5", text:"html", color:"E34F26", logoColor:"white", classes:["me-2"], link:false, url:""}))
-    col.append(createBadge({logo:"css3", text:"css", color:"1572B6", logoColor:"white", classes:[], link:false, url:""}))
+    
+    }
+
+    col.append(badgeDiv)
+
+    col.innerHTML += `<br/>`
 
     col.innerHTML += 
     `
-    <br/><br/>
-    I love to code some quick functions in Javascript, add some html and css for webb apps, or play with some classes and methods in C#.Net.
+    <div>
+      I love to code some quick functions in Javascript, add some html and css for webb apps, or play with some classes and methods in C#.Net.
 
-    <br/><br/>
-    Check out the projects section for some of my coding and animation projects and experiements.
+      <br/><br/>
+      Check out the projects section for some of my coding- and animation- projects and experiements.
 
-    <br/><br/>
-    I have also been working with animation and graphics over the past 10 years.
-    <br/>
-    My main tools for animations are Cinema 4D, After Effects and Photoshop.
+      <br/><br/>
+      I have also been working with animation and graphics over the past 10 years.
+      <br/>
+      My main tools for animations are Cinema 4D, After Effects and Photoshop.
+    </div>
     `
 
     row.append(col)
@@ -1323,104 +1355,22 @@ class MainContentElement extends HTMLDivElement{
     col.classList.add("col")
     col.classList.add("p-0")
     col.classList.add("m-0")
-    col.innerHTML = `Links<br/><br/>`
+    col.innerHTML = `<h2>Social</h2>`
 
+    for (const ld of linksData) {
+      col.append(
+        createBadge(ld)
+      )
     
-
-
-    col.append(
-      createBadge(
-        {
-          logo:"LinkedIn", 
-          text:"LinkedIn", 
-          color:"0A66C2", 
-          logoColor:"white", 
-          classes:["me-2"],
-          link:true,
-          url:"https://www.linkedin.com/in/patrikmossbergg"
-        }
-      )
-    )
-
-    col.append(
-      createBadge(
-        {
-          logo:"GitHub", 
-          text:"GitHub", 
-          color:"000", 
-          logoColor:"white", 
-          classes:["me-2"],
-          link:true,
-          url:"https://github.com/xPMoss"
-        }
-      )
-    )
-
-    col.append(
-      createBadge(
-        {
-          logo:"turbosquid", 
-          text:"turbosquid", 
-          color:"FF8135", 
-          logoColor:"white", 
-          classes:["me-2"],
-          link:true,
-          url:"https://www.turbosquid.com/Search/Artists/wemg?referral=wemg"
-        }
-      )
-    )
-
-    col.append(
-      createBadge(
-        {
-          logo:"vimeo", 
-          text:"vimeo", 
-          color:"1AB7EA", 
-          logoColor:"white", 
-          classes:["me-2"],
-          link:true,
-          url:"https://vimeo.com/cgfx"
-        }
-      )
-    )
-
-    col.append(
-      createBadge(
-        {
-          logo:"behance", 
-          text:"behance", 
-          color:"1769FF", 
-          logoColor:"white", 
-          classes:["me-2"],
-          link:true,
-          url:"https://www.behance.net/xpm35"
-        }
-      )
-    )
+    }
 
     row.appendChild(col)
 
-
-
     this.pages.push(row)
+
   }
 
-
-
   render(){
-
-    // Reset
-    this.innerHTML = ""
-    for(const page of this.pages){
-      page.classList.add("d-none")
-
-    }
-
-    // Create
-    for(const page of this.pages){
-      this.appendChild(page)
-
-    }
 
     let currentPage
     let currentPageIndex
@@ -1466,7 +1416,20 @@ class MainContentElement extends HTMLDivElement{
       previousPageIndex:previousPageIndex
     }
 
-    if( currentPage){
+    if(currentPage && currentPage != previousPage){
+        // Reset
+        this.innerHTML = ""
+        for(const page of this.pages){
+          page.classList.add("d-none")
+
+        }
+
+        // Create
+        for(const page of this.pages){
+          this.appendChild(page)
+
+        }
+
 
       if (previousPage) {
         let animout = this.animateOut(animData)
