@@ -7,8 +7,12 @@ body{
     min-width: 100vw;
     min-height: 120vh;
     font-family: system-ui;
+
 }
 
+div{
+    overflow: hidden;
+}
 
 .bg-white{
     background-color: hsl(0, 0%, 95%);

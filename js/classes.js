@@ -148,17 +148,15 @@ class CanvasElement extends HTMLCanvasElement{
   constructor(data){
     super(); // always call super() first in the constructor.
 
-    this.classList.add("img");
     this.classList.add("img-fluid");
-    this.classList.add("ratio");
-    this.classList.add("ratio-16x9")
+    this.classList.add("ratio", "ratio-16x9");
    
     // Size
     //this.style.width = this.w + "px";
     //this.style.height = this.h + "px";
 
     // Styles
-    this.style.border = "1px solid " + this.colors("HSL", "GREY", 0, 90);
+    //this.style.border = "1px solid " + this.colors("HSL", "GREY", 0, 90);
 
     //console.log(this.width + "x" + this.height)
 
@@ -171,44 +169,44 @@ class CanvasElement extends HTMLCanvasElement{
   draw(data){
     let ctx = this.ctx;
 
-    if (data.title == "Animation Library") {
+    if (data.headline == "Animation Library") {
       this.al(ctx);
     }
 
-    if (data.title == "Link Database") {
+    if (data.headline == "Link Database") {
       this.ld(ctx);
     }
 
-    if (data.title == "The Movie App") {
+    if (data.headline == "The Movie App") {
       this.tma(ctx);
     }
 
-    if (data.title == "Tree view") {
+    if (data.headline == "Tree view") {
       this.tw(ctx);
     }
 
-    if (data.title == "Snake") {
+    if (data.headline == "Snake") {
       this.snake(ctx);
     }
 
-    if (data.title == "3D Engine") {
+    if (data.headline == "3D Engine") {
       this.e(ctx);
     }
 
-    if (data.title == "My webpage") {
+    if (data.headline == "My webpage") {
       this.mw(ctx);
     }
 
-    if (data.title == "Turbosquid") {
+    if (data.headline == "Turbosquid") {
       this.ts(ctx);
     }
 
-    if (data.title == "Calender") {
+    if (data.headline == "Calender") {
       this.calender(ctx);
     }
     
     
-    if (data.title == "The Movie Service") {
+    if (data.headline == "The Movie Service") {
       this.tms(ctx);
     }
     
@@ -656,23 +654,26 @@ class ProjectElement extends HTMLDivElement{
     constructor(data){
         super(); // always call super() first in the constructor.
 
-        this.title = data.title;
-        this.techniques = data.techniques;
-        this.info = data.info;
-        this.link = data.link;
+        this.title = data.title
+        this.techniques = data.techniques
+        this.info = data.info
+        this.link = data.link
+        this.headline = data.headline
+        this.linkText = data.linkText
         this.image = data.image
         this.imgSrc = data.image
 
+        this.tags = data.tags
         this.show = data.show
 
-        this.classList.add("col-sm-12");
-        this.classList.add("col-md-6");
-        this.classList.add("col-lg-4");
-        this.classList.add("col-xl-3");
+        this.classList.add("col-sm-12")
+        this.classList.add("col-md-6")
+        this.classList.add("col-lg-4")
+        this.classList.add("col-xl-3")
         this.classList.add("p-0", "m-0")
-        this.classList.add("pe-sm-4", "m-0")
+        this.classList.add("pe-0", "pe-sm-4", "m-0")
         this.classList.add("mb-4");
-        this.id = this.title;
+        this.id = this.title
 
         this.render()
 
@@ -685,198 +686,145 @@ class ProjectElement extends HTMLDivElement{
         techniques: this.techniques,
         info: this.info,
         link: this.link,
-        
+        linkText: this.linkText,
+        headline: this.headline,
+        tags: this.tags,
       }
 
       this.innerHTML = ""
 
-      let listGroup = document.createElement("div");
-      listGroup.classList.add("list-group");
+      let container = document.createElement("div")
+      container.classList.add("col", "p-0", "m-0", "border", "rounded-1")
 
+      let divider = document.createElement("div");
+      divider.classList.add("pt-2", "pb-1", "border-bottom");
 
-      // Create items
-      //-->
-      let item;
+      // Header
+      // #region Header     
+      let header = document.createElement("div");
+      header.classList.add("row", "p-0", "px-3", "py-2", "m-0", "bg-light" , "border-bottom")
+      let title = document.createElement("h5")
+      title.classList.add("col", "p-0", "m-0", "text-truncate", "user-select-none")
+      title.innerHTML = data.headline
+      header.append(title)
+      let closeBtn = document.createElement("div")
+      closeBtn.classList.add("col-auto", "px-1", "border", "rounded-1")
+      closeBtn.style.cursor = "pointer"
+      if (this.isCollapsed) {
+        let caretUp = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#808080" class="bi bi-caret-up" viewBox="0 0 32 28">
+                        <path d="M3.204 11h9.592L8 5.519zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659" transform="scale(2,2)"/>
+                      </svg>`
 
-      let titleElement
-      let imageElement
-
-      for (let [k, v] of Object.entries(data)) {
-          let figure = document.createElement("figure");
-
-          item = document.createElement("div");
-
-          if (k == "title") {
-              item = document.createElement("div");
-              item.classList.add("active");
-              item.classList.add("text-truncate");
-
-
-              item.style.background = "HSL(0, 0%, 40%)"
-              item.style.border = "none"
-
-              item.style.userSelect = "none"
-              
-              let row = document.createElement("div");
-              row.classList.add("row");
-              row.classList.add("pe-2");
-              row.classList.add("justify-content-between");
-
-              let header = document.createElement("h4");
-              header.classList.add("col-auto");
-              header.classList.add("text-truncate");
-              header.innerHTML = v;
-
-              let closeBtn = document.createElement("div");
-              closeBtn.classList.add("col-auto");
-              closeBtn.classList.add("border");
-              closeBtn.classList.add("rounded");
-              closeBtn.style.cursor = "pointer"
-              if (this.isCollapsed) {
-                let caretUp = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 32 28">
-                                <path d="M3.204 11h9.592L8 5.519zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659" transform="scale(2,2)"/>
-                              </svg>`
-
-                closeBtn.innerHTML = caretUp
-              }
-              else{
-                
-                let caretDown = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" stroke="" viewbox="0 0 32 28" class="bi bi-caret-down">
-                                  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" transform="scale(2,2)"></path>
-                                </svg>`
-
-                closeBtn.innerHTML = caretDown
-              }
-              
-              closeBtn.onmouseover = ()=>{
-                closeBtn.style.background = "HSL(200, 40%, 40%)"
-              }
-
-              closeBtn.onmouseleave = ()=>{
-                closeBtn.style.background = "HSL(0, 0%, 40%)"
-              }
-
-              closeBtn.onmousedown = ()=>{
-                closeBtn.style.background = "HSL(200, 20%, 60%)"
-              }
-
-              closeBtn.onmouseup = ()=>{
-                closeBtn.style.background = "HSL(200, 40%, 40%)"
-              }
-
-
-              closeBtn.addEventListener("click", ()=>{
-                this.collapse();
-
-              })
-              //data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-
-            this.header = item;
-
-            row.append(header)
-            row.append(closeBtn)
-            item.append(row)
-            
-            titleElement = item
-
-          }
-          else if (k == "image") {
-                item = document.createElement("a");
-                //item.classList.add("disabled");
-                item.classList.add("text-dark");
-                item.href = data.link;
-                item.target = "_blank"
-
-                let img = document.createElement("img");
-                img.classList.add("img-fluid");
-                
-                //img.classList.add("p-0");
-              
-
-              if (v) {
-                img.src = "./img/" + data.image;
-              }
-              else{
-                img.src = "https://via.placeholder.com/320x180?text=TEXT";
-
-              }
-
-              item.append(new CanvasElement(data));
-
-              this.image = item;
-              imageElement = item
-              //item.append(img);
-              
-          }
-          else{
-              if (k == "link") {
-                  item = document.createElement("a");
-                  item.classList.add("text-truncate");
-
-                  item.classList.add("list-group-item");
-                  item.classList.add("list-group-item-action");
-  
-                  item.target = "_blank";
-                  item.href = v;
-              }
-
-              if (k != "link") {
-                  item.classList.add("disabled");
-                  item.classList.add("text-dark");
-              }
-
-              
-          }
-          
-          
-          
-          if (k != "link") {
-              //item.classList.add("bg-light");
-              item.classList.add("m-0");
-              item.classList.add("list-group-item");
-              item.classList.add("list-group-item-action");
-
-          }
-          
-          if (k == "title") {
-              
-          }
-          else if (k == "image") {
-              
-          }
-          else{
-              let uc = k.charAt(0).toUpperCase() + k.slice(1, k.length); // First letter to uppercase
-              item.innerHTML = "<small class=''><b>" + uc + ":</b></small><br/>";
-              item.innerHTML += v;
-
-          }
-
-          if (k != "title" && k != "image") {
-            this.body.push(item);
-          }
-                  
-          if(this.isCollapsed && k !="title"){
-            item.style.display = "none";
-          }
-
-          listGroup.appendChild(item);
-
-          //console.log(k)
-          //console.log(v)
+        closeBtn.innerHTML = caretUp
       }
-      //<--
+      else{
+        
+        let caretDown = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#808080" stroke="" viewbox="0 0 32 28" class="bi bi-caret-down">
+                          <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" transform="scale(2,2)"></path>
+                        </svg>`
 
+        closeBtn.innerHTML = caretDown
+      }
+
+      closeBtn.addEventListener("click", ()=>{
+        this.collapse()
+
+      })
+      header.append(closeBtn)
+      // #endregion
+
+      // Body
+      let body = document.createElement("div")
+      body.classList.add("col", "p-0", "m-0")
+      
+      let image = document.createElement("a")
+      image.classList.add("p-0", "m-0")
+      image.href = data.link
+      image.target = "_blank"
+      image.append(new CanvasElement(data))
+
+      let img = document.createElement("img")
+      img.classList.add("img-fluid")
+      if (true) {
+        
+      }
+      else{
+        
+      }
+      
+      body.append(image)
+
+      let techniques = document.createElement("div")
+      techniques.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
+      techniques.innerHTML = "<small class=''><b>" + "Techniques" + ":</b></small><br/>"
+      techniques.innerHTML += data.techniques
+      body.append(techniques)
+
+      if(data.info){
+        let info = document.createElement("div")
+        info.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
+        info.innerHTML = "<small class=''><b>" + "Info" + ":</b></small><br/>"
+        info.innerHTML += data.info
+        body.append(info)
+      }
+      
+
+      if(data.link){
+        let linkDiv = document.createElement("div")
+        linkDiv.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
+        linkDiv.innerHTML += "<small class=''><b>" + "Link" + ":</b></small><br/>"
+        let link = document.createElement("a")
+        link.classList.add("text-truncate")
+        link.target = "_blank"
+        link.href = data.link
+        link.innerHTML += data.linkText
+        linkDiv.append(link)
+        body.append(linkDiv)
+
+      }
+      
+
+      if(data.tags){
+        let tags = document.createElement("div")
+        tags.classList.add("row", "p-0", "px-3", "pb-3", "m-0")
+
+        let tagList = data.tags
+        tagList.sort()
+
+        for (const tag of tagList) {
+          let t = document.createElement("small")
+          t.classList.add("col-auto", "p-0", "p-2", "m-0", "mb-2", "me-2", "border", "rounded-1", "user-select-none")
+          t.innerHTML = tag
+    
+          tags.append(t)
+          
+        }
+        body.append(tags)
+        
+      }
+      
+      // Append
+      container.appendChild(header)
+      container.appendChild(body)
+      this.appendChild(container)
+
+      // Set
+      this.header = header
+      this.body = body
+
+      // 
       if(this.isCollapsed){
-        titleElement.classList.add("rounded-bottom")
+        header.classList.add("rounded-bottom")
+        this.body.style.display = "none";
+        //this.body.classList.add("d-none")
       }
 
-      this.appendChild(listGroup);
+
     }
 
     update(){
 
-      
-      this.render()
+    
    
 
     }
@@ -887,25 +835,19 @@ class ProjectElement extends HTMLDivElement{
 
       if (this.isCollapsed) {
 
-        for (const item of this.body) {
-          item.style.display = "none";
-          
-        }
-        this.image.classList.remove("rounded-0")
-        this.image.classList.add("rounded-bottom")
+        this.body.style.display = "none";
+
       }
       else{
-        for (const item of this.body) {
-          item.style.display = "block";
-          
-        }
-        this.image.classList.remove("rounded-bottom")
-        this.image.classList.add("rounded-0")
+        this.body.style.display = "block";
+        //this.image.classList.remove("rounded-bottom")
+        //this.image.classList.add("rounded-0")
       }
 
       //console.log("collapse")
       //console.log(this.isCollapsed)
       this.update()
+      this.render()
     }
     
 }
@@ -1273,14 +1215,19 @@ class MainContentElement extends HTMLDivElement{
     col.classList.add("p-0")
     col.classList.add("m-0")
 
+    // My name is...
     col.innerHTML = 
     `
     <div class="p-0 pb-2 m-0">
       My name is Patrik and I am a web- and applications- developer with focus on JavaScript, HTML, CSS and C#.Net.
     </div>
     `
-    col.innerHTML += `<h2>Languages</h2>`
+    
+    // Languages
     let badgeDiv_languages = document.createElement("div")
+    badgeDiv_languages.classList.add("border", "rounded-1", "px-2")
+    badgeDiv_languages.innerHTML += `<h4>Languages</h4>`
+
     for (const bd of badgeData_languages) {
       badgeDiv_languages.append(
         createBadge(bd)
@@ -1290,15 +1237,18 @@ class MainContentElement extends HTMLDivElement{
     col.append(badgeDiv_languages)
     col.innerHTML += `<br/>`
 
+    // I love to code...
     col.innerHTML += 
     `
     <div class="p-0 pb-2 m-0">
       I love to code some quick functions in Javascript, add some html and css for webb apps, or play with some classes and methods in C#.Net.
     </div>
     `
-
-    col.innerHTML += `<h2>Frameworks</h2>`
+    // Frameworks
     let badgeDiv_frameworks = document.createElement("div")
+    badgeDiv_frameworks.classList.add("border", "rounded-1", "px-2", "col-auto")
+    badgeDiv_frameworks.innerHTML += `<h4>Frameworks</h4>`
+
     for (const bd of badgeData_frameworks) {
       badgeDiv_frameworks.append(
         createBadge(bd)
@@ -1308,6 +1258,7 @@ class MainContentElement extends HTMLDivElement{
     col.append(badgeDiv_frameworks)
     col.innerHTML += `<br/>`
 
+    // Check out the projects...
     col.innerHTML += 
     `
     <div class="p-0 pb-2 m-0">
@@ -1319,9 +1270,13 @@ class MainContentElement extends HTMLDivElement{
       My main tools for animations are Cinema 4D, After Effects and Photoshop.
     </div>
     `
+    // Tools
+    let badgeDiv = document.createElement("div")
+    badgeDiv.classList.add("border", "rounded-1", "px-2")
+    badgeDiv.innerHTML += `<h4>Tools</h4>`
 
-    col.innerHTML += `<h2>Tools</h2>`
     let badgeDiv_dev_tools = document.createElement("div")
+    badgeDiv_dev_tools.classList.add("mb-3")
     for (const bd of badgeData_tools) {
       if(bd.type == "dev_tool"){
         badgeDiv_dev_tools.append(
@@ -1329,9 +1284,10 @@ class MainContentElement extends HTMLDivElement{
         )
       }
     }
-    col.append(badgeDiv_dev_tools)
+    badgeDiv.append(badgeDiv_dev_tools)
 
     let badgeDiv_dev_platform = document.createElement("div")
+    badgeDiv_dev_platform.classList.add("mb-3")
     for (const bd of badgeData_tools) {
       if(bd.type == "dev_platform"){
         badgeDiv_dev_platform.append(
@@ -1339,7 +1295,7 @@ class MainContentElement extends HTMLDivElement{
         )
       }
     }
-    col.append(badgeDiv_dev_platform)
+    badgeDiv.append(badgeDiv_dev_platform)
 
     let badgeDiv_anim_tool = document.createElement("div")
     for (const bd of badgeData_tools) {
@@ -1349,8 +1305,9 @@ class MainContentElement extends HTMLDivElement{
         )
       }
     }
-    col.append(badgeDiv_anim_tool)
-    col.innerHTML += `<br/>`
+    badgeDiv.append(badgeDiv_anim_tool)
+
+    col.append(badgeDiv)
 
     row.append(col)
 
@@ -1373,20 +1330,58 @@ class MainContentElement extends HTMLDivElement{
     desc.classList.add("m-0", "mb-4")
 
     let content
-    content = `<span>On this page you can se a collection of work I have done over the years as an developer, 3D-artist and motion designer.</span><br/>
-    <small>(Click on the images to view the content, or click on the links to get more information)</small>
-    <br/><br/>`
+    content = `
+    <span class="p-0 m-0">
+      On this page you can se a collection of work I have done over the years as an developer, 3D-artist and motion designer.
+    </span>
+    <small class="p-0 m-0">
+      (Click on the images to view the content, or click on the links to get more information)
+    </small>
+    `
     desc.innerHTML = content
 
     row.appendChild(desc)
 
-    let proj = document.createElement("div")
-    proj.classList.add("row")
-    proj.classList.add("p-0")
-    proj.classList.add("m-0")
+    let tags = document.createElement("div")
+    tags.classList.add("row", "p-0", "m-0", "mb-3")
 
-    projectsData = sortByTitle(projectsData)
+    let tagList = []
+
+    for (const project of animationData) {
+      if(project.tags){
+        for (const tag of project.tags) {
+          tagList.push(tag)
+        }
+      }
+    }
+
     for (const project of projectsData) {
+      if(project.tags){
+        for (const tag of project.tags) {
+          tagList.push(tag)
+        }
+      }
+    }
+
+    tagList = [...new Set(tagList)]
+    tagList.sort()
+    for (const tag of tagList) {
+      let t = document.createElement("div")
+      t.classList.add("col-auto", "p-0", "p-2", "m-0", "mb-2", "me-2", "border", "rounded-1", "user-select-none")
+      t.innerHTML = tag
+
+      tags.append(t)
+      
+    }
+
+    row.appendChild(tags)
+
+    let proj = document.createElement("div")
+    proj.classList.add("row", "p-0", "m-0")
+
+    projectsData = sortByHeadline(projectsData)
+    for (const project of projectsData) {
+
       let col = new ProjectElement(project);
       projects.push(col)
 
@@ -1396,6 +1391,20 @@ class MainContentElement extends HTMLDivElement{
       }
         
     }
+
+    animationData = sortByHeadline(animationData)
+    for (const project of animationData) {
+      
+      let col = new ProjectElement(project);
+      projects.push(col)
+
+      if(project.show){
+        proj.appendChild(col)
+
+      }
+        
+    }
+
     row.appendChild(proj)
 
 
@@ -1417,15 +1426,18 @@ class MainContentElement extends HTMLDivElement{
     col.classList.add("col")
     col.classList.add("p-0")
     col.classList.add("m-0")
-    col.innerHTML = `<h2>Social</h2>`
+
+    let badgeDiv = document.createElement("div")
+    badgeDiv.classList.add("border", "rounded-1", "px-2")
+    badgeDiv.innerHTML += `<h4>Social</h4>`
 
     for (const ld of linksData) {
-      col.append(
+      badgeDiv.append(
         createBadge(ld)
       )
     
     }
-
+    col.append(badgeDiv)
     row.appendChild(col)
 
     this.pages.push(row)

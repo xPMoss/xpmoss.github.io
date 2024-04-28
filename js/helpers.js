@@ -21,6 +21,28 @@ let sortByTitle = (list)=>{
   
 }
 
+let sortByHeadline = (list)=>{ 
+    list.sort((a, b) => {
+      const nameA = a.headline.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.headline.toUpperCase(); // ignore upper and lowercase
+  
+      if (nameA < nameB) {
+        return -1;
+      }
+  
+      if (nameA > nameB) {
+        return 1;
+      }
+  
+      // names must be equal
+      return 0;
+        
+    });
+  
+    return list
+  
+}
+
 let createBadge = (data)=>{ 
     let img = document.createElement("img")
 
