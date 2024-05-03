@@ -1,8 +1,8 @@
 
 let sortByTitle = (list)=>{ 
     list.sort((a, b) => {
-      const nameA = a.title.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.title.toUpperCase(); // ignore upper and lowercase
+      const nameA = a.info.title.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.info.title.toUpperCase(); // ignore upper and lowercase
   
       if (nameA < nameB) {
         return -1;
@@ -23,8 +23,8 @@ let sortByTitle = (list)=>{
 
 let sortByHeadline = (list)=>{ 
     list.sort((a, b) => {
-      const nameA = a.headline.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.headline.toUpperCase(); // ignore upper and lowercase
+      const nameA = a.info.headline.toUpperCase(); // ignore upper and lowercase
+      const nameB = b.info.headline.toUpperCase(); // ignore upper and lowercase
   
       if (nameA < nameB) {
         return -1;

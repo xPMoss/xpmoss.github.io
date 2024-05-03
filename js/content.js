@@ -1,1289 +1,2136 @@
 
 
+let projectData = [
+    {
+        info: {
+            title: "GirlShop",
+            headline: "Girl Shop",
+            info: "",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Angular", "TypeScript", "Html", "Css"
+            ],
+            tags: [
+                "Firebase",
+                "Angular",
+                "TypeScript",
+                "Html",
+                "Css",
+                "Dev"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: null,
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://girl-shop-1337.web.app/",
+                text: "girl-shop-1337.web.app"
+            }
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
+    },
 
-let projectsData = [
+	{
+        info: {
+            title: "AnimationLibrary",
+            headline: "Animation Library",
+            info: "For easy animation directly in Html code.",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                [
+                    "Javascript"
+                ]
+            ],
+            tags: [
+                "Javascript",
+                "Dev"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: "AnimationLibrary.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+				url:"https://github.com/xPMoss/anim.lib",
+				text:"github.com/xPMoss/anim.lib",
+			},
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
+    },
+    
     {
-        title:"Animation Library",
-		headline : "Animation Library",
-		thumbnail: null,
-	    video: null,
-        image:"animlib.jpg",
-        techniques:"Javascript",
-        info:"For easy animation directly in Html code.",
-        link:"https://github.com/xPMoss/anim.lib",
-		linkText:"github.com/xPMoss/anim.lib",
-		tags: ["Javascript", "Dev"],
-        show: true,
+        info: {
+            title: "TheMovieApp",
+            headline: "The Movie App",
+            info: "Coding with Html, Css & Javascript. A movie website",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Javascript, html, css"
+            ],
+            tags: [
+                "Javascript",
+                "Html",
+                "Css",
+                "Dev"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: null,
+            thumbnail: null,
+			realtime: true
+        },
+        links: {
+            project: {
+                url: "https://xpmoss.github.io/tma",
+                text: "xpmoss.github.io/tma"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
     },
     {
-        title:"Link Database",
-		headline : "Link Database",
-		thumbnail: null,
-	    video: null,
-        image:"ld.jpg",
-        techniques:"Javascript, html, css",
-        info:"Coding with Html, Css & Javascript. Testing some filtering code",
-        link:"https://github.com/xPMoss/link-database-client",
-		linkText:"github.com/xPMoss/link-database-client",
-		tags: ["Javascript", "Html", "Css", "Dev"],
-        show: true,
+        info: {
+            title: "TheMovieService",
+            headline: "The Movie Service",
+            info: "Coding with Angular. A movie website",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Angular, TypeScript, html, css"
+            ],
+            tags: [
+                "Angular",
+                "TypeScript",
+                "Html",
+                "Css",
+                "Dev"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: null,
+            thumbnail: null,
+			realtime: true
+        },
+        links: {
+            project: {
+                url: "https://the-movie-service.web.app",
+                text: "the-movie-service.web.app"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
     },
     {
-        title:"The Movie App",
-		headline : "The Movie App",
-		thumbnail: null,
-	    video: null,
-        image:"tmdb.jpg",
-        techniques:"Javascript, html, css",
-        info:"Coding with Html, Css & Javascript. A movie website",
-        link:"https://xpmoss.github.io/tma",
-		linkText:"xpmoss.github.io/tma",
-		tags: ["Javascript", "Html", "Css", "Dev"],
-        show: true,
+        info: {
+            title: "TreeView",
+            headline: "Tree view",
+            info: "Coding with canvas. A W.I.P tree view with javascript",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Javascript", "Html", "Css"
+            ],
+            tags: [
+                "Javascript",
+                "Html",
+                "Css",
+                "Dev"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: null,
+            thumbnail: null,
+			realtime: true
+        },
+        links: {
+            project: {
+                url: "https://xpmoss.github.io/treeview",
+                text: "xpmoss.github.io/treeview"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
     },
     {
-        title:"The Movie Service",
-		headline : "The Movie Service",
-		thumbnail: null,
-	    video: null,
-        image:"tms.jpg",
-        techniques:"Angular, TypeScript, html, css",
-        info:"Coding with Angular. A movie website",
-        link:"https://the-movie-service.web.app",
-		linkText:"the-movie-service.web.app",
-		tags: ["Angular", "TypeScript", "Html", "Css", "Dev"],
-        show: true,
+        info: {
+            title: "Snake",
+            headline: "Snake",
+            info: "Snake Game made with C#",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "C#"
+            ],
+            tags: [
+                "C#",
+                "Dev"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: null,
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://github.com/xPMoss/snake",
+                text: "github.com/xPMoss/snake"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
     },
     {
-        title:"Tree view",
-		headline : "Tree view",
-		thumbnail: null,
-	    video: null,
-        image:"tw.jpg",
-        techniques:"Javascript, html, css",
-        info:"Coding with canvas. A W.I.P tree view with javascript",
-        link:"https://xpmoss.github.io/treeview",
-		linkText:"xpmoss.github.io/treeview",
-		tags: ["Javascript", "Html", "Css", "Dev"],
-        show: true,
+        info: {
+            title: "3DEngine",
+            headline: "3D Engine",
+            info: "Testing coding with canvas. A 'fake' 3D box with javascript",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Javascript", "Html", "Css"
+            ],
+            tags: [
+                "Javascript",
+                "Html",
+                "Css",
+                "Dev"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: "3DEngine.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://xpmoss.github.io/threedcube",
+                text: "xpmoss.github.io/threedcube"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
     },
     {
-        title:"Snake",
-		headline : "Snake",
-		thumbnail: null,
-	    video: null,
-        image:"snake.jpg",
-        techniques:"C#",
-        info:"Snake Game made with C#",
-        link:"https://github.com/xPMoss/snake",
-		linkText:"github.com/xPMoss/snake",
-		tags: ["C#", "Dev"],
-        show: true,
+        info: {
+            title: "Turbosquid",
+            headline: "Turbosquid",
+            info: "My turbosquid page",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D-graphics, modelling, texturing, rendering"
+            ],
+            tags: [
+                "3D"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: "Turbosquid.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://www.turbosquid.com/Search/Artists/wemg?referral=wemg",
+                text: "turbosquid.com/Search/Artists/wemg"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
     },
     {
-        title:"3D Engine",
-		headline : "3D Engine",
-		thumbnail: null,
-	    video: null,
-        image:"3d_engine.jpg",
-        techniques:"Javascript, html, css",
-        info:"Testing coding with canvas. A 'fake' 3D box with javascript",
-        link:"https://xpmoss.github.io/threedcube",
-		linkText:"xpmoss.github.io/threedcube",
-		tags: ["Javascript", "Html", "Css", "Dev"],
-        show: true,
+        info: {
+            title: "JavaScriptMario",
+            headline: "JavaScript Mario",
+            info: "A mario game made with JavaScript and canvas, very W.I.P",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Javascript, html, css"
+            ],
+            tags: [
+                "Javascript",
+                "Html",
+                "Css",
+                "Dev"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: null,
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://github.com/xPMoss/js-mario",
+                text: "github.com/xPMoss/js-mario"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
     },
     {
-        title:"Turbosquid",
-		headline : "Turbosquid",
-		thumbnail: null,
-	    video: null,
-        image:"ts.jpg",
-        techniques:"3D-graphics, modelling, texturing, rendering",
-        info:"My turbosquid page",
-        link:"https://www.turbosquid.com/Search/Artists/wemg?referral=wemg",
-		linkText:"turbosquid.com/Search/Artists/wemg",
-		tags: ["3D"],
-        show: true,
+        info: {
+            title: "Calender",
+            headline: "Calender",
+            info: "A calender made in Angular. Keep track of worked hours",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Angular, TypeScript, html, css"
+            ],
+            tags: [
+                "Angular",
+                "TypeScript",
+                "Html",
+                "Css",
+                "Dev"
+            ],
+            software: []
+        },
+        media: {
+            video: null,
+            image: "Calender.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://github.com/xPMoss/calender-client",
+                text: "github.com/xPMoss/calender-client"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: null,
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "Showreel",
+            headline: "Showreel",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/316567932",
+            image: null,
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/316567932",
+                text: "vimeo.com/316567932"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "StripeAdd",
+            headline: "Stripe Add",
+            info: null,
+            company: "Stripe",
+            client: "Stripe",
+        },
+        data: {
+            techniques: [
+                "3D-graphics", "Rendering", "Compositing"
+            ],
+            tags: ["3D"],
+            software: ["Maya", "Gimp"]
+        },
+        media: {
+            video: null,
+            image: "StripeAdd.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "image",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "ElkjopCommercial",
+            headline: "Elkjøp Commercial",
+            info: null,
+            company: "Stripe",
+            client: "Elkjøp"
+        },
+        data: {
+            techniques: [
+                "3D-graphics", "Animation", "Rendering"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/8697469",
+            image: "ElkjopCommercial.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/8697469",
+                text: "vimeo.com/8697469"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "Lundabradan",
+            headline: "Lundabrädan",
+            info: null,
+            company: null,
+            client: null,
+        },
+        data: {
+            techniques: [
+                "3D-graphics", "Rendering", "Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: null,
+            image: "lunda.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "image",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "CoalitionOfTheWilling",
+            headline: "Coalition of the Willing",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D-graphics", "Rendering", "Compositing"
+            ],
+            tags: [],
+            software: ["Cinema 4D", "After Effects"]
+        },
+        media: {
+            video: null,
+            image: "coalition.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "O2Commercial",
+            headline: "O2 Commercial",
+            info: null,
+            company: "Sehsucht",
+            client: "O2"
+        },
+        data: {
+            techniques: [
+                "Animation", "Previz"
+            ],
+            tags: ["3D"],
+            software: ["Cinema 4D", "After Effects"]
+        },
+        media: {
+            video: "https://player.vimeo.com/video/16307205",
+            image: "o2.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://vimeo.com/16307205",
+                text: "vimeo.com/16307205"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "Ceros200",
+            headline: "Ceros 200",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Particle effects, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/YGVP2LtRp64",
+            image: "ceros.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://www.youtube.com/watch?v=YGVP2LtRp64",
+                text: "youtube.com/watch?v=YGVP2LtRp64"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "9LANDBMS",
+            headline: "9LAND BMS",
+            info: "9Land Battle Management System",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Tracking, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/y279obKTuKE",
+            image: "9LANDBMS.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://www.youtube.com/watch?v=y279obKTuKE",
+                text: "youtube.com/watch?v=y279obKTuKE"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "Rapid3DMapping",
+            headline: "Rapid 3D Mapping",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Particle effects"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/336417003",
+            image: "Rapid3DMapping.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://vimeo.com/336417003",
+                text: "vimeo.com/336417003"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "Tacticall",
+            headline: "Tacticall",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Tracking, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/336416342",
+            image: "Tacticall.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://vimeo.com/336416342",
+                text: "vimeo.com/336416342"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "idisplay_darwin",
+            headline: "Absolut Darwin",
+            info: "Absolut Darwin - Store Display",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/336421256",
+            image: "idisplay_darwin.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://vimeo.com/336421256",
+                text: "vimeo.com/336421256"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "idisplay_sleeve",
+            headline: "Absolut Sleeve",
+            info: "Store Display",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/336421214",
+            image: "idisplay_sleeve.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://vimeo.com/336421214",
+                text: "vimeo.com/336421214"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "idisplay_moy",
+            headline: "Absolut Mid of Year 2017",
+            info: "Store Display",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/336421302",
+            image: "idisplay_moy.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://vimeo.com/336421302",
+                text: "vimeo.com/336421302"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "idisplay_rainbow",
+            headline: "Absolut Rainbow",
+            info: "Store Display",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/336421342",
+            image: "idisplay_rainbow.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://vimeo.com/336421342",
+                text: "vimeo.com/336421342"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "absolut_new_design",
+            headline: "Absolut.",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/336418541",
+            image: "absolut_new_design.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://vimeo.com/336418541",
+                text: "vimeo.com/336418541"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "slussen_tos",
+            headline: "Trafik och stadsliv",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/49220363",
+            image: "slussen_tos.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "Slussen_TrafikUnderByggtiden",
+            headline: "Trafik under byggtiden",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/F7pqymN6fvQ",
+            image: "slussen_tub.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "slussen_land",
+            headline: "Tekniska utmaningar på land",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "2D-animation"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/CZ_Ib4xgCqw",
+            image: "slussen_land.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "slussen_vatten",
+            headline: "Tekniska utmaningar i vattenomr&aring;det",
+            info: "Nya Slussen - tekniska utmaningar i vattenomr&aring;det",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "2D-animation"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/Z6BgjJ4cx28",
+            image: "slussen_vatten.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "slussen_berg",
+            headline: "Tekniska utmaningar i berg",
+            info: "Nya Slussen - tekniska utmaningar i berg",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/EMtvIivVjSo",
+            image: "slussen_berg.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "sbk",
+            headline: "Samr&aring;d",
+            info: "Stadsbyggnadskontoret - Samr&aring;d",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/76044004",
+            image: "sbk.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "Lagesrapport2014",
+            headline: "L&auml;gesrapport v&aring;ren 2014",
+            info: "Slussen - l&auml;gesrapport v&aring;ren 2014",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/EpjR9HsBxIs",
+            image: "lagesrapport_2014.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "MalibuRedesign",
+            headline: "Malibu Redesign",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/49221171",
+            image: "malibu_redesign.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "blc",
+            headline: "Bygglogistikcenter",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/_Bu237Fl87k",
+            image: "blc.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "nds",
+            headline: "Norra Djurg&aring;rdsstaden",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/Fqh8QRywnC4",
+            image: "nds.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "varberg",
+            headline: "Varberg utvecklas",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "2D/Motion-graphics"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/GZJ2WsFmtdg",
+            image: "varberg.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "AndFrankly",
+            headline: "&Frankly",
+            info: null,
+            company: "Mediabolaget",
+            client: "&Frankly"
+        },
+        data: {
+            techniques: [
+                "2D-graphics", "Animation", "Rendering"
+            ],
+            tags: ["2D", "Animation"],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/pZgrz3Q274I",
+            image: "andfrankly.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://www.youtube.com/watch?v=pZgrz3Q274I",
+                text: "youtube.com/watch?v=pZgrz3Q274I"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "fi",
+            headline: "Så är det att jobba på Finansinspektionen",
+            info: null,
+            company: "Mediabolaget",
+            client: "Finansinspektionen"
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering"
+            ],
+            tags: ["3D", "2D", "Animation"],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/GRatYup09I4",
+            image: "fi.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://www.youtube.com/watch?v=GRatYup09I4",
+                text: "youtube.com/watch?v=GRatYup09I4"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "katarinahissen",
+            headline: "Katarinahissen",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Hypertimelapse", "Photography", "2D-graphics", "Animation"
+            ],
+            tags: ["Timelapse"],
+            software: ["After Effects"]
+        },
+        media: {
+            video: "https://www.youtube.com/embed/gcqZvg6eisM",
+            image: "katarinahissen.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://www.youtube.com/watch?v=gcqZvg6eisM",
+                text: "youtube.com/watch?v=gcqZvg6eisM"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "FI_penning",
+            headline: "Penningtvätt",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "2D-graphics", "Animation", "Rendering"
+            ],
+            tags: ["2D", "Animation"],
+            software: ["After Effects"]
+        },
+        media: {
+            video: "https://www.youtube.com/embed/-mIpOE8Eaf8",
+            image: "FI_penning.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "Submarine",
+            headline: "Submarine",
+            info: "Testing some stuff in Arnold renderer, modelling and shading...",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D"
+            ],
+            tags: ["3D"],
+            software: ["Cinema 4D", "After Effects", "Arnold"]
+        },
+        media: {
+            video: "https://player.vimeo.com/video/328707422",
+            image: "submarine.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: null,
+                text: null
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "slussen_nya_slussen_2019",
+            headline: "Vad ska vi bygga?",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/RyiBQEs9Dfs",
+            image: "slussen_nya_slussen_2019.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "slussen_bron_del1",
+            headline: "Slussens nya huvudbron - Del 1",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/I-SthvVZhxw",
+            image: "slussen_bron_del1.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "www.youtube.com/watch?I-SthvVZhxw",
+                text: "youtube.com/watch?I-SthvVZhxw"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "slussen_bron_del2",
+            headline: "Slussens nya huvudbron - Del 2",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/v9se4vWMBJw",
+            image: "slussen_bron_del2.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "www.youtube.com/watch?v=v9se4vWMBJw",
+                text: "youtube.com/watch?v=v9se4vWMBJw"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "slussen_bussterminalen",
+            headline: "Nya Bussterminalen i Slussen",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-graphics, Animation, Rendering, Compositing"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://www.youtube.com/embed/iqi75Muysnw",
+            image: "slussen_bussterminalen.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://www.youtube.com/watch?v=iqi75Muysnw",
+                text: "www.youtube.com/watch?v=iqi75Muysnw"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "mail_fast",
+            headline: "Mail Fast",
+            info: "Testing some rigging, dynamics and rendering...",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Cinema 4D and Redshift Renderer"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/343598907",
+            image: "mail_fast.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "coffee",
+            headline: "Need Coffee?",
+            info: "Character design and rigging test...",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Cinema 4D and Redshift Renderer"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/345004844",
+            image: "coffee.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "bulb",
+            headline: "Bulb Idea",
+            info: "Having some fun with Arnold Renderer.",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Cinema 4D and Arnold Renderer"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/338879860",
+            image: "bulb.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "icecream",
+            headline: "Icecream",
+            info: "Playing around with some character design and rigging...",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Cinema 4D and Redshift Renderer"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/349761203",
+            image: "icecream.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/349761203",
+                text: "vimeo.com/349761203"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "nintendo",
+            headline: "Nintendo Medley",
+            info: "Testing some modelling techniques...",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Cinema 4D and Redshift Renderer"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/349960360",
+            image: "nintendo.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/349960360",
+                text: "vimeo.com/349960360"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "rbot",
+            headline: "R-Bot",
+            info: "Playing around with Redshift and Cinema 4D...",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Cinema 4D and Redshift Renderer"
+            ],
+            tags: [
+                "Animation",
+                "3D"
+            ],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/367203288",
+            image: "rbot.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/367203288",
+                text: "vimeo.com/367203288"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "orc",
+            headline: "Redshift Orc",
+            info: "Playing around with Redshift, Cinema 4D and some non-destructive modelling and rigging...",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Cinema 4D and Redshift Renderer"
+            ],
+            tags: [
+                "Animation",
+                "3D"
+            ],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/389546434",
+            image: "orc.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/389546434",
+                text: "vimeo.com/389546434"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "hl_display",
+            headline: "Birth, life & death of a datastrip",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "2D-graphics, Animation, Motion Design"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: null,
+            image: "hl_display.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: false,
+            status: "offline"
+        }
+    },
+    {
+        info: {
+            title: "malibu_splash_2020",
+            headline: "Malibu Splash",
+            info: null,
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D/2D-animation, Animation, Motion Design, Rendering"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/392795260",
+            image: "malibu_splash_2020.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/392795260",
+                text: "vimeo.com/392795260"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "ideal_nr1",
+            headline: "IDEaL!",
+            info: "Film som gjordes för att förklara den svenska modellen IDEaL!",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "2D-graphics, Animation, Motion Design"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/392786690",
+            image: "ideal_nr1.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/392786690",
+                text: "vimeo.com/392786690"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+    {
+        info: {
+            title: "ideal_nr2",
+            headline: "IDEaL!",
+            info: "Film som gjordes för att förklara den svenska modellen IDEaL!",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "2D-graphics, Animation, Motion Design"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: null,
+            image: "ideal_nr2.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: null,
+                text: null
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: false,
+            status: "offline"
+        }
+    },
+    {
+        info: {
+            title: "hela_spektrat",
+            headline: "Hela Spektrat",
+            info: "Gjorde animationer till ett semenarium",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "2D-animation, Motion Design"
+            ],
+            tags: [
+                "2D",
+                "Animation"
+            ],
+            software: []
+        },
+        media: {
+            video: "https://player.vimeo.com/video/392785590",
+            image: "hela_spektrat.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/392785590",
+                text: "vimeo.com/392785590"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
+    },
+   
 
+    {
+        info: {
+            title: "LinkDatabase",
+            headline: "Link Database",
+            info: "Coding with Html, Css & Javascript. Testing some filtering code",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "Javascript", "Html", "Css"
+            ],
+            tags: [],
+            software: []
+        },
+        media: {
+            video: null,
+            image: "LinkDatabase.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: {
+                url: "https://github.com/xPMoss/link-database-client",
+                text: "github.com/xPMoss/link-database-client"
+            },
+            result: null
+        },
+        state: {
+            page: "projects",
+            content: "html",
+            show: true,
+            status: "online"
+        }
     },
     {
-        title:"JavaScript Mario",
-		headline : "JavaScript Mario",
-		thumbnail: null,
-	    video: null,
-        image:"js-mario.jpg",
-        techniques:"Javascript, html, css",
-        info:"A mario game made with JavaScript and canvas, very W.I.P",
-        link:"https://github.com/xPMoss/js-mario",
-		linkText:"github.com/xPMoss/js-mario",
-		tags: ["Javascript", "Html", "Css", "Dev"],
-        show: true,
-
-    },
-    {
-        title:"Calender",
-		headline : "Calender",
-		thumbnail: null,
-	    video: null,
-        image:"calender.jpg",
-        techniques:"Angular, TypeScript, html, css",
-        info:"A calender made in Angular. Keep track of worked hours",
-        link:"https://github.com/xPMoss/calender-client",
-		linkText:"github.com/xPMoss/calender-client",
-		tags: ["Angular", "TypeScript", "Html", "Css", "Dev"],
-        show: true,
-
+        info: {
+            title: "LinkedInVideo",
+            headline: "LinkedIn Video",
+            info: "A animation I did for some self promotion",
+            company: null,
+            client: null
+        },
+        data: {
+            techniques: [
+                "3D", "Animation"
+            ],
+            tags: [],
+            software: ["Cinema 4D", "Redshift"]
+        },
+        media: {
+            video: "https://player.vimeo.com/video/524351550",
+            image: "LinkedInVideo.jpg",
+            thumbnail: null,
+			realtime: null
+        },
+        links: {
+            project: null,
+            result: {
+                url: "https://vimeo.com/524351550",
+                text: "vimeo.com/524351550"
+            },
+        },
+        state: {
+            page: "projects",
+            content: "video",
+            show: true,
+            status: "online"
+        }
     }
-
 
 
 
 ]
 
 
-let animationData = 
-[
-    { 
-        title: "showreel",
-        headline: "Showreel",
-	    productioncompany: "Misc",
-	    client: "Misc",
-	    techniques: "3D-graphics, Animation, Rendering, Compositing",
-		thumbnail: null,
-	    video: "https://player.vimeo.com/video/316567932",
-		image: null,
-		link: "https://vimeo.com/316567932",
-		linkText: "vimeo.com/316567932",
-	    info: null,
-	    content: "video",
-        status: "online",
-        page: "showreel",
-		software: null,
-		tags: null,
-		show: true,
-    }, 
-    { 
-        title: "stripe",
-        headline: "Stripe Add",
-	    productioncompany: "Stripe",
-	    client: "Stripe",
-	    techniques: "3D-graphics, Rendering, Compositing",
-		thumbnail: "images/small/stripe.jpg",
-	    video: null,
-		image: "images/small/stripe.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "image",
-        status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "elkjop",
-	    headline: "Elkjøp Commercial",
-	    productioncompany: "Stripe",
-	    client: "Elkjøp",
-	    techniques: "3D-graphics, Animation, Rendering",
-		thumbnail: "images/small/elkjop.jpg",
-	    video: "https://player.vimeo.com/video/8697469",
-        image: "images/elkjop.jpg",
-		link: "https://vimeo.com/8697469",
-		linkText: "vimeo.com/8697469",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "lunda",
-	    headline: "Lundabrädan",
-	    productioncompany:null,
-	    client: "The association Lundabrädan",
-	    techniques: "3D-graphics, Rendering, Compositing",
-		thumbnail: "images/small/lunda.jpg",
-	    video: null,
-        image: "images/lunda.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "image",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title:"coalition",
-	    headline: "Coalition of the Willing",
-	    productioncompany: "Sehsucht",
-	    client: null,
-	    techniques: null,
-		thumbnail: "images/small/coalition.jpg",
-	    video: null,
-        image: "images/coalition.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "o2",
-	    headline: "O2 Commercial",
-	    productioncompany: "Sehsucht",
-	    client: "O2",
-	    techniques: "Animation Previz/Tests",
-		thumbnail: "images/small/o2.jpg",
-	    video: "https://player.vimeo.com/video/16307205",
-        image: "images/o2.jpg",
-		link: "https://vimeo.com/16307205",
-		linkText: "vimeo.com/16307205",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "ceros",
-	    headline: "Ceros 200",
-	    productioncompany: "Logical Arts",
-	    client: "SAAB Group",
-	    techniques: "3D/2D-graphics, Animation, Particle effects, Rendering, Compositing",
-		thumbnail: "images/small/ceros.jpg",
-	    video: "https://www.youtube.com/embed/YGVP2LtRp64",
-        image: "images/ceros.jpg",
-		link: "https://www.youtube.com/watch?v=YGVP2LtRp64",
-		linkText: "youtube.com/watch?v=YGVP2LtRp64",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "bms",
-	    headline: "9L BMS",
-	    productioncompany: "Logical Arts",
-	    client: "SAAB Group",
-	    techniques: "3D/2D-graphics, Animation, Tracking, Rendering, Compositing",
-		thumbnail: "images/small/bms.jpg",
-	    video: "https://www.youtube.com/embed/y279obKTuKE",
-        image: "images/bms.jpg",
-		link: "https://www.youtube.com/watch?v=y279obKTuKE",
-		linkText: "youtube.com/watch?v=y279obKTuKE",
-	    info: "9Land Battle Management System",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "rapid",
-	    headline: "Rapid 3D Mapping",
-	    productioncompany: "Logical Arts",
-	    client: "SAAB Group",
-	    techniques: "3D/2D-graphics, Animation, Particle effects",
-		thumbnail: "images/small/rapid.jpg",
-	    video: "https://player.vimeo.com/video/336417003",
-        image: "images/rapid.jpg",
-		link: "https://vimeo.com/336417003",
-		linkText: "vimeo.com/336417003",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "tacticall",
-	    headline: "Tacticall",
-	    productioncompany: "Logical Arts",
-	    client: "SAAB Group",
-	    techniques: "3D/2D-graphics, Animation, Tracking, Rendering, Compositing",
-		thumbnail: "images/small/tacticall.jpg",
-	    video: "https://player.vimeo.com/video/336416342",
-        image: "images/tacticall.jpg",
-		link: "https://vimeo.com/336416342",
-		linkText: "vimeo.com/336416342",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "idisplay_darwin",
-	    headline: "Absolut Darwin",
-	    productioncompany: "Mediabolaget",
-	    client: "The Absolut Company",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/idisplay_darwin.jpg",
-	    video: "https://player.vimeo.com/video/336421256",
-        image: "images/idisplay_darwin.jpg",
-		link: "https://vimeo.com/336421256",
-		linkText: "vimeo.com/336421256",
-	    info: "Absolut Darwin - Store Display",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "idisplay_sleeve",
-	    headline: "Absolut Sleeve",
-	    productioncompany: "Mediabolaget",
-	    client: "The Absolut Company",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/idisplay_sleeve.jpg",
-	    video: "https://player.vimeo.com/video/336421214",
-        image: "images/idisplay_sleeve.jpg",
-		link: "https://vimeo.com/336421214",
-		linkText: "vimeo.com/336421214",
-	    info: "Store Display",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "idisplay_moy",
-	    headline: "Absolut Mid of Year 2017",
-	    productioncompany: "Mediabolaget",
-	    client: "The Absolut Company",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/idisplay_moy.jpg",
-	    video: "https://player.vimeo.com/video/336421302",
-        image: "images/idisplay_moy.jpg",
-		link: "https://vimeo.com/336421302",
-		linkText: "vimeo.com/336421302",
-	    info: "Store Display",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "idisplay_rainbow",
-	    headline: "Absolut Rainbow",
-	    productioncompany: "Mediabolaget",
-	    client: "The Absolut Company",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/idisplay_rainbow.jpg",
-	    video: "https://player.vimeo.com/video/336421342",
-        image: "images/idisplay_rainbow.jpg",
-		link: "https://vimeo.com/336421342",
-		linkText: "vimeo.com/336421342",
-	    info: "Store Display",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "absolut_new_design",
-	    headline: "Absolut.",
-	    productioncompany: "Mediabolaget",
-	    client: "The Absolut Company",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/absolut_new_design.jpg",
-	    video: "https://player.vimeo.com/video/336418541",
-        image: "images/absolut_new_design.jpg",
-		link: "https://vimeo.com/336418541",
-		linkText: "vimeo.com/336418541",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "slussen_tos",
-	    headline: "Trafik och stadsliv",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/slussen_tos.jpg",
-	    video: "https://player.vimeo.com/video/49220363",
-        image: "images/slussen_tos.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "slussen_tub",
-	    headline: "Trafik under byggtiden",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/slussen_tub.jpg",
-	    video: "https://www.youtube.com/embed/F7pqymN6fvQ",
-        image: "images/slussen_tub.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "slussen_land",
-	    headline: "Tekniska utmaningar på land",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "2D-animation",
-		thumbnail: "images/small/slussen_land.jpg",
-	    video: "https://www.youtube.com/embed/CZ_Ib4xgCqw",
-        image: "images/slussen_land.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "slussen_vatten",
-	    headline: "Tekniska utmaningar i vattenomr&aring;det",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "2D-animation",
-		thumbnail: "images/small/slussen_vatten.jpg",
-	    video: "https://www.youtube.com/embed/Z6BgjJ4cx28",
-        image: "images/slussen_vatten.jpg",
-		link: null,
-		linkText: null,
-	    info: "Nya Slussen - tekniska utmaningar i vattenomr&aring;det",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {   
-        title: "slussen_berg",
-	    headline: "Tekniska utmaningar i berg",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/slussen_berg.jpg",
-	    video: "https://www.youtube.com/embed/EMtvIivVjSo",
-        image: "images/slussen_berg.jpg",
-		link: null,
-		linkText: null,
-	    info: "Nya Slussen - tekniska utmaningar i berg",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "sbk",
-	    headline: "Samr&aring;d",
-	    productioncompany: "Mediabolaget",
-	    client: "Stadsbyggnadskontoret",
-	    techniques: "3D/2D-graphics, Animation, Rendering",
-		thumbnail: "images/small/sbk.jpg",
-	    video: "https://player.vimeo.com/video/76044004",
-        image: "images/sbk.jpg",
-		link: null,
-		linkText: null,
-	    info: "Stadsbyggnadskontoret - Samr&aring;d",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "lagesrapport_2014",
-	    headline: "l&auml;gesrapport v&aring;ren 2014",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "3D/2D-graphics, Animation, Rendering",
-		thumbnail: "images/small/lagesrapport_2014.jpg",
-	    video: "https://www.youtube.com/embed/EpjR9HsBxIs",
-        image: "images/lagesrapport_2014.jpg",
-		link: null,
-		linkText: null,
-	    info: "Slussen - l&auml;gesrapport v&aring;ren 2014",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "malibu_redesign",
-	    headline: "Malibu - Redesign",
-	    productioncompany: "Mediabolaget",
-	    client: "Malibu",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/malibu_redesign.jpg",
-	    video: "https://player.vimeo.com/video/49221171",
-        image: "images/malibu_redesign.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "blc",
-	    headline: "Bygglogistikcenter",
-	    productioncompany: "Mediabolaget",
-	    client: "Norra Djurg&aring;rdsstaden",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/blc.jpg",
-	    video: "https://www.youtube.com/embed/_Bu237Fl87k",
-        image: "images/blc.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    },
-    {
-        title: "nds",
-	    headline: "Norra Djurg&aring;rdsstaden",
-	    productioncompany: "Mediabolaget",
-	    client: "Norra Djurg&aring;rdsstaden",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/nds.jpg",
-	    video: "https://www.youtube.com/embed/Fqh8QRywnC4",
-        image: "images/nds.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "varberg",
-	    headline: "Varberg utvecklas",
-	    productioncompany: "Mediabolaget",
-	    client: "Varbergs kommun",
-	    techniques: "2D/Motion-graphics",
-		thumbnail: "images/small/varberg.jpg",
-	    video: "https://www.youtube.com/embed/GZJ2WsFmtdg",
-        image: "images/varberg.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "andfrankly",
-	    headline: "&Frankly",
-	    productioncompany: "Mediabolaget",
-	    client: "&Frankly",
-	    techniques: "2D-graphics, Animation, Rendering",
-		thumbnail: "images/small/andfrankly.jpg",
-	    video: "https://www.youtube.com/embed/pZgrz3Q274I",
-        image: "images/andfrankly.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "fi",
-	    headline: "Så är det att jobba på Finansinspektionen",
-	    productioncompany: "Mediabolaget",
-	    client: "Finansinspektionen",
-	    techniques: "3D/2D-graphics, Animation, Rendering",
-		thumbnail: "images/small/fi.jpg",
-	    video: "https://www.youtube.com/embed/GRatYup09I4",
-        image: "images/fi.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "katarinahissen",
-	    headline: "Katarinahissen",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "Hypertimelapse Photography, 2D-graphics, Animation",
-		thumbnail: "images/small/katarinahissen.jpg",
-	    video: "https://www.youtube.com/embed/gcqZvg6eisM",
-        image: "images/katarinahissen.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "FI_penning",
-	    headline: "Penningtvätt",
-	    productioncompany: "Mediabolaget",
-	    client: "Finansinspektionen",
-	    techniques: "2D-graphics, Animation, Rendering",
-		thumbnail: "images/small/FI_penning.jpg",
-	    video: "https://www.youtube.com/embed/-mIpOE8Eaf8",
-        image: "images/FI_penning.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "submarine",
-	    headline: "Submarine",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Cinema 4D and Arnold Renderer",
-		thumbnail: "images/small/submarine.jpg",
-	    video: "https://player.vimeo.com/video/328707422",
-        image: "images/submarine.jpg",
-		link: null,
-		linkText: null,
-	    info: "Testing some stuff in Arnold renderer, modelling and shading...",
-	    content: "video",
-	    status: "online",
-        page: "personal",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "slussen_nya_slussen_2019",
-	    headline: "Vad ska vi bygga?",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/slussen_nya_slussen_2019.jpg",
-	    video: "https://www.youtube.com/embed/RyiBQEs9Dfs",
-        image: "images/slussen_nya_slussen_2019.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "slussen_bron_del1",
-	    headline: "Slussens nya huvudbron - Del 1",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/slussen_bron_del1.jpg",
-	    video: "https://www.youtube.com/embed/I-SthvVZhxw",
-        image: "images/slussen_bron_del1.jpg",
-		link: "www.youtube.com/watch?I-SthvVZhxw",
-		linkText: "youtube.com/watch?I-SthvVZhxw",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "slussen_bron_del2",
-	    headline: "Slussens nya huvudbron - Del 2",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/slussen_bron_del2.jpg",
-	    video: "https://www.youtube.com/embed/v9se4vWMBJw",
-        image: "images/slussen_bron_del2.jpg",
-		link: "www.youtube.com/watch?v=v9se4vWMBJw",
-		linkText: "youtube.com/watch?v=v9se4vWMBJw",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "slussen_bussterminalen",
-	    headline: "Nya Bussterminalen i Slussen",
-	    productioncompany: "Mediabolaget",
-	    client: "Stockholms Stad",
-	    techniques: "3D/2D-graphics, Animation, Rendering, Compositing",
-		thumbnail: "images/small/slussen_bussterminalen.jpg",
-	    video: "https://www.youtube.com/embed/iqi75Muysnw",
-        image: "images/slussen_bussterminalen.jpg",
-		link: "https://www.youtube.com/watch?v=iqi75Muysnw",
-		linkText: "www.youtube.com/watch?v=iqi75Muysnw",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "mail_fast",
-	    headline: "Mail Fast",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Cinema 4D and Redshift Renderer",
-		thumbnail: "images/small/mail_fast.jpg",
-	    video: "https://player.vimeo.com/video/343598907",
-        image: "images/mail_fast.jpg",
-		link: null,
-		linkText: null,
-	    info: "Testing some rigging, dynamics and rendering...",
-	    content: "video",
-	    status: "online",
-        page: "personal",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "coffee",
-	    headline: "Need Coffee?",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Cinema 4D and Redshift Renderer",
-		thumbnail: "images/small/coffee.jpg",
-	    video: "https://player.vimeo.com/video/345004844",
-        image: "images/coffee.jpg",
-		link: null,
-		linkText: null,
-	    info: "Character design and rigging test...",
-	    content: "video",
-	    status: "online",
-        page: "personal",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "bulb",
-	    headline: "Bulb Idea",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Cinema 4D and Arnold Renderer",
-		thumbnail: "images/small/bulb.jpg",
-	    video: "https://player.vimeo.com/video/338879860",
-        image: "images/bulb.jpg",
-		link: null,
-		linkText: null,
-	    info: "Having some fun with Arnold Renderer.",
-	    content: "video",
-	    status: "online",
-        page: "personal",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "icecream",
-	    headline: "Icecream",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Cinema 4D and Redshift Renderer",
-		thumbnail: "images/small/icecream.jpg",
-	    video: "https://player.vimeo.com/video/349761203",
-        image: "images/icecream.jpg",
-		link: "https://vimeo.com/349761203",
-		linkText: "vimeo.com/349761203",
-	    info: "Playing around with some character design and rigging...",
-	    content: "video",
-	    status: "online",
-        page: "personal",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "nintendo",
-	    headline: "Nintendo Medley",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Cinema 4D and Redshift Renderer",
-		thumbnail: "images/small/nintendo.jpg",
-	    video: "https://player.vimeo.com/video/349960360",
-        image: "images/nintendo.jpg",
-		link: "https://vimeo.com/349960360",
-		linkText: "vimeo.com/349960360",
-	    info: "Testing some modelling techniques...",
-	    content: "video",
-	    status: "online",
-        page: "personal",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "rbot",
-	    headline: "R-Bot",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Cinema 4D and Redshift Renderer",
-		thumbnail: "images/small/rbot.jpg",
-	    video: "https://player.vimeo.com/video/367203288",
-        image: "images/rbot.jpg",
-		link: "https://vimeo.com/367203288",
-		linkText: "vimeo.com/367203288",
-	    info: "Playing around with Redshift and Cinema 4D...",
-	    content: "video",
-	    status: "online",
-        page: "personal",
-		software: ["C4D", "Redshift", "AE"],
-		tags: ["Animation", "3D"],
-		show: true,
-
-    }, 
-    {
-        title: "orc",
-	    headline: "Redshift Orc",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Cinema 4D and Redshift Renderer",
-		thumbnail: "images/small/orc.jpg",
-	    video: "https://player.vimeo.com/video/389546434",
-        image: "images/orc.jpg",
-		link: "https://vimeo.com/389546434",
-		linkText: "vimeo.com/389546434",
-	    info: "Playing around with Redshift, Cinema 4D and some non-destructive modelling and rigging...",
-	    content: "video",
-	    status: "online",
-        page: "personal",
-		software: ["Cinema 4D", "Redshift", "After Effects"],
-		tags: ["Animation", "3D"],
-		show: true,
-
-    }, 
-    {
-        title: "hl_display",
-	    headline: "Birth, life & death of a datastrip",
-	    productioncompany: "Mediabolaget",
-	    client: "HL Display",
-	    techniques: "2D-graphics, Animation, Motion Design",
-		thumbnail: "images/small/hl_display.jpg",
-	    video: null,
-        image: "images/hl_display.jpg",
-		link: null,
-		linkText: null,
-	    info: null,
-	    content: "video",
-	    status: "offline",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: false,
-
-    }, 
-    {
-        title: "malibu_splash_2020",
-	    headline: "Malibu Splash",
-	    productioncompany: "Mediabolaget",
-	    client: "Malibu",
-	    techniques: "3D/2D-animation, Animation, Motion Design, Rendering",
-		thumbnail: "images/small/malibu_splash_2020.jpg",
-	    video: "https://player.vimeo.com/video/392795260",
-        image: "images/malibu_splash_2020.jpg",
-		link: "https://vimeo.com/392795260",
-		linkText: "vimeo.com/392795260",
-	    info: null,
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "ideal_nr1",
-	    headline: "IDEaL!",
-	    productioncompany: "Mediabolaget",
-	    client: "Polisen",
-	    techniques: "2D-graphics, Animation, Motion Design",
-		thumbnail: "images/small/ideal_nr1.jpg",
-	    video: "https://player.vimeo.com/video/392786690",
-        image: "images/ideal_nr1.jpg",
-		link: "https://vimeo.com/392786690",
-		linkText: "vimeo.com/392786690",
-	    info: "Film som gjordes för att förklara den svenska modellen IDEaL!",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "ideal_nr2",
-	    headline: "IDEaL!",
-	    productioncompany: "Mediabolaget",
-	    client: "Polisen",
-	    techniques: "2D-graphics, Animation, Motion Design",
-		thumbnail: "images/small/ideal_nr2.jpg",
-	    video: null,
-        image: "images/ideal_nr2.jpg",
-		link: null,
-		linkText: null,
-	    info: "Film som gjordes för att förklara den svenska modellen IDEaL!",
-	    content: "video",
-	    status: "offline",
-        page: "projects",
-		software: null,
-		tags: null,
-		show: false,
-
-    }, 
-    {
-        title: "hela_spektrat",
-	    headline: "Hela Spektrat",
-	    productioncompany: "Mediabolaget",
-	    client: "Hela Spektrat",
-	    techniques: "2D-animation, Motion Design",
-		thumbnail: "images/small/hela_spektrat.jpg",
-	    video: "https://player.vimeo.com/video/392785590",
-        image: "images/hela_spektrat.jpg",
-		link: "https://vimeo.com/392785590",
-		linkText: "vimeo.com/392785590",
-	    info: "Gjorde animationer till ett semenarium",
-	    content: "video",
-	    status: "online",
-        page: "projects",
-		software: null,
-		tags: ["2D", "Animation"],
-		show: true,
-
-    }, 
-    {
-        title: "3d_engine",
-	    headline: "3D Engine",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Javascript, html, css",
-		thumbnail: "images/small/3d_engine.jpg",
-	    video: null,
-        image: "images/3d_engine.jpg",
-        link: "https://xpmoss.github.io/threedcube",
-		linkText: "xpmoss.github.io/threedcube",
-	    info: "Testing coding with canvas. A 'fake' 3D box with javascript",
-	    content: "html",
-	    status: "online",
-        page: "dev",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "snake",
-	    headline: "Snake",
-	    productioncompany: null,
-	    client: "School Project",
-	    techniques: "C#",
-		thumbnail: "images/small/snake.jpg",
-	    video: null,
-        image: "images/snake.jpg",
-		link: "https://github.com/xPMoss/snake",
-		linkText: "github.com/xPMoss/snake",
-	    info: "Snake Game made with C#<br>Link to Git: <a href='https://github.com/xPMoss/snake' target='_blank'>github.com/xPMoss/snake</a>",
-	    content: "code",
-	    status: "online",
-        page: "dev",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "tw",
-	    headline: "Tree view",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Javascript, html, css",
-		thumbnail: "images/small/tw.jpg",
-	    video: null,
-		image: "images/small/tw.jpg",
-        link: "https://xpmoss.github.io/treeview",
-		linkText: "xpmoss.github.io/treeview",
-	    info: "Coding with canvas. A W.I.P tree view with javascript",
-	    content: "html",
-	    status: "online",
-        page: "dev",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "tmdb",
-	    headline: "The Movie App",
-	    productioncompany: null,
-	    client: "School Project",
-	    techniques: "Javascript, html, css",
-		thumbnail: "images/small/tmdb.jpg",
-	    video: null,
-		image: "images/small/tw.jpg",
-        link: "https://xpmoss.github.io/tma",
-		linkText: "xpmoss.github.io/tma",
-	    info: "Coding with Html, Css & Javascript. A movie website",
-	    content: "html",
-	    status: "online",
-        page: "dev",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "ld",
-	    headline: "Link Database",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Javascript, html, css",
-		thumbnail: "images/small/ld.jpg",
-	    video: null,
-		image: "images/small/tw.jpg",
-        link: "https://xpmoss.github.io/ld",
-		linkText: "xpmoss.github.io/ld",
-	    info: "Coding with Html, Css & Javascript. Testing some filtering code",
-	    content: "html",
-	    status: "online",
-        page: "dev",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "linked",
-	    headline: "LinkedIn Video",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Cinema 4D and Redshift Renderer",
-		thumbnail: "images/small/linked.jpg",
-	    video: "https://player.vimeo.com/video/524351550",
-		image: null,
-        link: null,
-		linkText: null,
-	    info: "A animation I did for some self promotion",
-	    content: "video",
-	    status: "online",
-        page: "personal",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "animlib",
-	    headline: "Animation Library",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Javascript",
-		thumbnail: null,
-	    video: null,
-        image: null,
-		link: "https://github.com/xPMoss/anim.lib",
-		linkText: null,
-	    info: "For easy animation directly in Html code.",
-	    content: "code",
-	    status: "online",
-        page: "dev",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "calender",
-	    headline: "Calender",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Angular",
-		thumbnail: "images/small/calender.jpg",
-	    video: null,
-        image: "images/small/calender.jpg",
-		link: "https://calender-angular-13656.web.app/",
-		linkText: null,
-	    info: "A calender for calculating worked hours",
-	    content: "code",
-	    status: "online",
-        page: "dev",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "projects_collection",
-	    headline: "Projects Collection",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Angular",
-		thumbnail: null,
-	    video: null,
-        image: null,
-		link: "https://projects-collection-3f14d.web.app",
-		linkText: "projects-collection-3f14d.web.app",
-	    info: "A site for project collections",
-	    content: "code",
-	    status: "online",
-        page: "dev",
-		software: null,
-		tags: null,
-		show: true,
-
-    }, 
-    {
-        title: "the_movie_app",
-	    headline: "Movie App",
-	    productioncompany: null,
-	    client: "Personal Project",
-	    techniques: "Angular",
-		thumbnail: "images/medium/tma.jpg",
-	    video: null,
-        image: "images/medium/tma.jpg",
-		link: "https://the-movie-app-344909.web.app/",
-		linkText: null,
-	    info: "A site for movie recommendations",
-	    content: "code",
-	    status: "online",
-        page: "dev",
-		software: null,
-		tags: null,
-		show: true,
-
-    }
-]
 
 let linksData = [
     {

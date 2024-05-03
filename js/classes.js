@@ -145,7 +145,7 @@ class CanvasElement extends HTMLCanvasElement{
 
   
 
-  constructor(data){
+  constructor(title){
     super(); // always call super() first in the constructor.
 
     this.classList.add("img-fluid");
@@ -160,53 +160,53 @@ class CanvasElement extends HTMLCanvasElement{
 
     //console.log(this.width + "x" + this.height)
 
-    this.draw(data);
+    this.draw(title);
 
 
   }
 
 
-  draw(data){
+  draw(title){
     let ctx = this.ctx;
 
-    if (data.headline == "Animation Library") {
+    if (title == "AnimationLibrary") {
       this.al(ctx);
     }
 
-    if (data.headline == "Link Database") {
+    if (title == "LinkDatabase") {
       this.ld(ctx);
     }
 
-    if (data.headline == "The Movie App") {
+    if (title == "TheMovieApp") {
       this.tma(ctx);
     }
 
-    if (data.headline == "Tree view") {
+    if (title == "TreeView") {
       this.tw(ctx);
     }
 
-    if (data.headline == "Snake") {
+    if (title == "Snake") {
       this.snake(ctx);
     }
 
-    if (data.headline == "3D Engine") {
+    if (title == "3DEngine") {
       this.e(ctx);
     }
 
-    if (data.headline == "My webpage") {
+    if (title == "My webpage") {
       this.mw(ctx);
     }
 
-    if (data.headline == "Turbosquid") {
+    if (title == "Turbosquid") {
       this.ts(ctx);
     }
 
-    if (data.headline == "Calender") {
+    if (title == "Calender") {
       this.calender(ctx);
     }
     
     
-    if (data.headline == "The Movie Service") {
+    if (title == "TheMovieService") {
       this.tms(ctx);
     }
     
@@ -640,31 +640,24 @@ class ProjectElement extends HTMLDivElement{
     body = []
     image
 
-    imgSrc
-
-    techniques
     info
-    link
-    title
+    data
+    media
+    links
+    state
 
-    show
 
     isCollapsed = false
 
     constructor(data){
         super(); // always call super() first in the constructor.
+        //console.log(data)
 
-        this.title = data.title
-        this.techniques = data.techniques
         this.info = data.info
-        this.link = data.link
-        this.headline = data.headline
-        this.linkText = data.linkText
-        this.image = data.image
-        this.imgSrc = data.image
-
-        this.tags = data.tags
-        this.show = data.show
+        this.data = data.data
+        this.media = data.media
+        this.links = data.links
+        this.state = data.state
 
         this.classList.add("col-sm-12")
         this.classList.add("col-md-6")
@@ -673,25 +666,14 @@ class ProjectElement extends HTMLDivElement{
         this.classList.add("p-0", "m-0")
         this.classList.add("pe-0", "pe-sm-4", "m-0")
         this.classList.add("mb-4");
-        this.id = this.title
+        this.id = this.info.title
 
         this.render()
 
     }
 
     render(){
-      let data = {
-        title: this.title,
-        image: this.imgSrc,
-        techniques: this.techniques,
-        info: this.info,
-        link: this.link,
-        linkText: this.linkText,
-        headline: this.headline,
-        tags: this.tags,
-      }
-
-      this.innerHTML = ""
+           this.innerHTML = ""
 
       let container = document.createElement("div")
       container.classList.add("col", "p-0", "m-0", "border", "rounded-1")
@@ -702,10 +684,11 @@ class ProjectElement extends HTMLDivElement{
       // Header
       // #region Header     
       let header = document.createElement("div");
+      header.id = "header-" + this.info.title
       header.classList.add("row", "p-0", "px-3", "py-2", "m-0", "bg-light" , "border-bottom")
       let title = document.createElement("h5")
       title.classList.add("col", "p-0", "m-0", "text-truncate", "user-select-none")
-      title.innerHTML = data.headline
+      title.innerHTML = this.info.headline
       header.append(title)
       let closeBtn = document.createElement("div")
       closeBtn.classList.add("col-auto", "px-1", "border", "rounded-1")
@@ -735,60 +718,138 @@ class ProjectElement extends HTMLDivElement{
 
       // Body
       let body = document.createElement("div")
+      body.id = "body-" + this.info.title
       body.classList.add("col", "p-0", "m-0")
       
-      let image = document.createElement("a")
-      image.classList.add("p-0", "m-0")
-      image.href = data.link
-      image.target = "_blank"
-      image.append(new CanvasElement(data))
+      let imageContainer = document.createElement("a")
+      imageContainer.classList.add("p-0", "m-0")
+
+      if(this.links.project && this.links.project.url){
+        imageContainer.href = this.links.project.url
+        imageContainer.target = "_blank"
+      }
+      else if(this.links.result && this.links.result.url){
+        imageContainer.href = this.links.result.url
+        imageContainer.target = "_blank"
+      }
+      
+      if(this.media.realtime){
+        imageContainer.append(new CanvasElement(this.info.title))
+      }
+      
 
       let img = document.createElement("img")
       img.classList.add("img-fluid")
-      if (true) {
-        
-      }
-      else{
-        
+      if (this.media.image) {
+        img.src = "img/small/" + this.media.image
+        imageContainer.append(img)
       }
       
-      body.append(image)
+      
+      body.append(imageContainer)
 
+       //
+       if(this.info.company){
+        let info = document.createElement("div")
+        info.id = "company-" + this.info.title
+
+        info.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
+        info.innerHTML = "<small class=''><b>" + "Company" + ":</b></small><br/>"
+        info.innerHTML += this.info.company
+        body.append(info)
+
+      }
+
+      if(this.info.client){
+        let info = document.createElement("div")
+        info.id = "client-" + this.info.title
+
+        info.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
+        info.innerHTML = "<small class=''><b>" + "Client" + ":</b></small><br/>"
+        info.innerHTML += this.info.client
+        body.append(info)
+
+      }
+
+      //
+      if(this.info.info){
+        let info = document.createElement("div")
+        info.id = "info-" + this.info.title
+
+        info.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
+        info.innerHTML = "<small class=''><b>" + "Info" + ":</b></small><br/>"
+        info.innerHTML += this.info.info
+        body.append(info)
+
+      }
+
+      //
       let techniques = document.createElement("div")
       techniques.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
       techniques.innerHTML = "<small class=''><b>" + "Techniques" + ":</b></small><br/>"
-      techniques.innerHTML += data.techniques
+
+      let techniquesList = this.data.techniques
+      techniquesList.sort()
+
+      for (let i = 0; i < techniquesList.length; i++) {
+        let teq = techniquesList[i];
+        techniques.innerHTML += teq
+
+        if (i < techniquesList.length-2) {
+          techniques.innerHTML += ", "
+        }
+
+        if (i == techniquesList.length-2) {
+          techniques.innerHTML += " and "
+        }
+
+      }
+
       body.append(techniques)
 
-      if(data.info){
-        let info = document.createElement("div")
-        info.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
-        info.innerHTML = "<small class=''><b>" + "Info" + ":</b></small><br/>"
-        info.innerHTML += data.info
-        body.append(info)
-      }
+     
+
+
+
       
 
-      if(data.link){
+      if(this.links.project && this.links.project.url){
         let linkDiv = document.createElement("div")
+        linkDiv.id = "links-" + this.info.title
         linkDiv.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
         linkDiv.innerHTML += "<small class=''><b>" + "Link" + ":</b></small><br/>"
         let link = document.createElement("a")
         link.classList.add("text-truncate")
         link.target = "_blank"
-        link.href = data.link
-        link.innerHTML += data.linkText
+        link.href = this.links.project.url
+        link.innerHTML += this.links.project.text
+        linkDiv.append(link)
+        body.append(linkDiv)
+
+      }
+
+      if(this.links.result && this.links.result.url){
+        let linkDiv = document.createElement("div")
+        linkDiv.id = "links-" + this.info.title
+        linkDiv.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
+        linkDiv.innerHTML += "<small class=''><b>" + "Link" + ":</b></small><br/>"
+        let link = document.createElement("a")
+        link.classList.add("text-truncate")
+        link.target = "_blank"
+        link.href = this.links.result.url
+        link.innerHTML += this.links.result.text
         linkDiv.append(link)
         body.append(linkDiv)
 
       }
       
 
-      if(data.tags){
+      if(this.data.tags){
         let tags = document.createElement("div")
         tags.classList.add("row", "p-0", "px-3", "pb-3", "m-0")
+        tags.id = "tags-" + this.info.title
 
-        let tagList = data.tags
+        let tagList = this.data.tags
         tagList.sort()
 
         for (const tag of tagList) {
@@ -1180,6 +1241,7 @@ class MainContentElement extends HTMLDivElement{
 
   currentPage
   pages = []
+  projects = []
 
   constructor(data){
     super()
@@ -1346,19 +1408,12 @@ class MainContentElement extends HTMLDivElement{
     tags.classList.add("row", "p-0", "m-0", "mb-3")
 
     let tagList = []
-
-    for (const project of animationData) {
-      if(project.tags){
-        for (const tag of project.tags) {
+    for (const project of projectData) {
+      if(project.data.tags){
+        for (const tag of project.data.tags) {
           tagList.push(tag)
-        }
-      }
-    }
 
-    for (const project of projectsData) {
-      if(project.tags){
-        for (const tag of project.tags) {
-          tagList.push(tag)
+         
         }
       }
     }
@@ -1368,7 +1423,72 @@ class MainContentElement extends HTMLDivElement{
     for (const tag of tagList) {
       let t = document.createElement("div")
       t.classList.add("col-auto", "p-0", "p-2", "m-0", "mb-2", "me-2", "border", "rounded-1", "user-select-none")
+
+      if(filters.includes(tag)){
+        t.classList.add("bg-dark")
+      }
+
       t.innerHTML = tag
+      t.addEventListener("click", ()=>{
+        console.log("filters", filters)
+        
+
+
+        if(filters.includes(tag)){
+          t.classList.remove("bg-dark", "text-light")
+          const index = filters.indexOf(tag);
+          if (index > -1) { // only splice array when item is found
+            filters.splice(index, 1); // 2nd parameter means remove one item only
+          }
+        }
+        else{
+          filters.push(tag)
+          t.classList.add("bg-dark", "text-light")
+          filters = [...new Set(filters)]
+          
+        }
+
+        for (const project of projectData) {
+
+          let obj = document.getElementById(project.info.title)
+          //console.log(obj)
+
+          if(project.state.status == "online" && project.state.show){
+            obj.classList.add("d-none")
+          }
+          
+
+          for(const tag of project.data.tags) {  
+            if(filters.includes(tag)){
+              obj.classList.remove("d-none")
+
+            }
+          }
+
+        }
+
+
+        if(filters.length < 1){
+          for (const project of projectData) {
+
+            let obj = document.getElementById(project.info.title)
+            //console.log(obj)
+  
+            if(project.state.status == "online" && project.state.show){
+              obj.classList.remove("d-none")
+            }
+           
+          }
+        }
+  
+
+
+        this.render()
+        console.log(filters)
+      })
+
+
+      
 
       tags.append(t)
       
@@ -1379,37 +1499,31 @@ class MainContentElement extends HTMLDivElement{
     let proj = document.createElement("div")
     proj.classList.add("row", "p-0", "m-0")
 
-    projectsData = sortByHeadline(projectsData)
-    for (const project of projectsData) {
+    projectData = sortByHeadline(projectData)
+    for (const project of projectData) {
 
       let col = new ProjectElement(project);
-      projects.push(col)
+      this.projects.push(col)
 
-      if(project.show){
+      if(project.state.status == "online" && project.state.show){
         proj.appendChild(col)
 
       }
+    
         
     }
 
-    animationData = sortByHeadline(animationData)
-    for (const project of animationData) {
-      
-      let col = new ProjectElement(project);
-      projects.push(col)
-
-      if(project.show){
-        proj.appendChild(col)
-
-      }
-        
-    }
-
+   
     row.appendChild(proj)
 
-
-
     this.pages.push(row)
+
+    for (const pro of this.projects) {
+      
+      //console.log("project", pro)
+        
+    }
+   
 
   }
 
@@ -1614,8 +1728,8 @@ class MainContentElement extends HTMLDivElement{
     }
 
     if(this.currentPage=="projects"){
-      for (const project of projects) {
-       project.update()
+      for (const project of this.projects) {
+        project.update()
                 
       }
   

@@ -5,7 +5,7 @@ let navigationContent
 let mainContent
 let footerContent
 
-let projects = []
+let filters = []
 
 //
 function start(){
@@ -44,3 +44,5 @@ function update(){
   mainContent.update()
 
 }
+
+
