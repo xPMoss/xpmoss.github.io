@@ -808,16 +808,11 @@ class ProjectElement extends HTMLDivElement{
       body.append(techniques)
 
      
-
-
-
-      
-
       if(this.links.project && this.links.project.url){
         let linkDiv = document.createElement("div")
-        linkDiv.id = "links-" + this.info.title
+        linkDiv.id = "links-project-" + this.info.title
         linkDiv.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
-        linkDiv.innerHTML += "<small class=''><b>" + "Link" + ":</b></small><br/>"
+        linkDiv.innerHTML += "<small class=''><b>" + "Project" + ":</b></small><br/>"
         let link = document.createElement("a")
         link.classList.add("text-truncate")
         link.target = "_blank"
@@ -830,9 +825,9 @@ class ProjectElement extends HTMLDivElement{
 
       if(this.links.result && this.links.result.url){
         let linkDiv = document.createElement("div")
-        linkDiv.id = "links-" + this.info.title
+        linkDiv.id = "links-result-" + this.info.title
         linkDiv.classList.add("col", "p-0", "px-3", "pb-3", "m-0")
-        linkDiv.innerHTML += "<small class=''><b>" + "Link" + ":</b></small><br/>"
+        linkDiv.innerHTML += "<small class=''><b>" + "Result" + ":</b></small><br/>"
         let link = document.createElement("a")
         link.classList.add("text-truncate")
         link.target = "_blank"
@@ -1005,6 +1000,9 @@ class NavigationContentElement extends HTMLDivElement{
         case 'links':
           currentPageIndex = 2
           break;
+        case 'about':
+          currentPageIndex = 3
+          break;
         default:
           break;
 
@@ -1042,8 +1040,12 @@ class NavigationContentElement extends HTMLDivElement{
             break;
           case 2:
             this.previousPage = "links"
-            this.currentPage = "links"
+            this.currentPage = "about"
             break;
+          case 3:
+              this.previousPage = "about"
+              this.currentPage = "about"
+              break;
           default:
             break;
   
@@ -1070,6 +1072,10 @@ class NavigationContentElement extends HTMLDivElement{
             case 2:
               this.previousPage = "links"
               this.currentPage = "projects"
+              break;
+            case 3:
+              this.previousPage = "projects"
+              this.currentPage = "about"
               break;
             default:
               break;
@@ -1117,6 +1123,10 @@ class NavigationContentElement extends HTMLDivElement{
       {
         title: "Links",
         page: "links"
+      },
+      {
+        title: "About",
+        page: "about"
       },
     ]
 
@@ -1254,11 +1264,13 @@ class MainContentElement extends HTMLDivElement{
     this.createHome()
     this.createProjects()
     this.createLinks()
+    this.createAbout()
 
     this.update()
     this.render()
 
     this.addEventListener("ChangeEvent", ()=>{
+      console.log("ChangeEvent")
       this.update()
 
     })
@@ -1483,7 +1495,7 @@ class MainContentElement extends HTMLDivElement{
   
 
 
-        this.render()
+        //this.render()
         console.log(filters)
       })
 
@@ -1528,7 +1540,7 @@ class MainContentElement extends HTMLDivElement{
   }
 
   createLinks(){
-    console.log("projects")
+    console.log("links")
 
     let row = document.createElement("div")
     row.classList.add("row")
@@ -1558,6 +1570,60 @@ class MainContentElement extends HTMLDivElement{
 
   }
 
+  createAbout(){
+    let row = document.createElement("div")
+    row.classList.add("row")
+    row.classList.add("p-0")
+    row.classList.add("m-0")
+    row.classList.add("d-none")
+
+    let col = document.createElement("div")
+    col.classList.add("col")
+    col.classList.add("p-0")
+    col.classList.add("m-0")
+    col.innerHTML += `<br/><br/><b>About me</b><br/>`
+    col.innerHTML += `I am a systems developer with expertise in the programing languages JavaScript, HTML, CSS, C#.Net och SQL. I have experience in both frontend and backend
+    development. <br/>
+    In addition to this, I have extensive work experience from the media
+    industry.
+    <br/><br/>
+    With a genuine interest in programming, tech and digital graphics, I have the ability to
+    learn new techniques and subjects. If there is something missing in my competence I
+    learn more about that specific area. I am a creative problem solver, ambitious and
+    curious. I am a team player that contributes with knowledge sharing to the team and
+    value to his clients.
+    <br/><br/>
+    I also have an education in Computer Graphics Design, which consists of 2D-,
+    3D-graphics and animation. I have been working with media for 10 years and have
+    gained experience from working in teams with small and large projects, to a broad
+    range of clients.
+    <br/><br/>
+    In my spare time I enjoy being with my family, photographing, and being in nature. I also
+    like to explore new areas in tech and IT. I have amongst other things been doing
+    projects with 3D-printers, crypto-mining, and single board computers and electronics.`
+
+    col.innerHTML += `<br/><br/><b>Experience</b>`
+    
+    col.innerHTML += `<br/>
+    Arbetsmiljöverket, Software Engineer, (04/23 till current)`
+    col.innerHTML += `<br/>
+    CGI, Software Engineer, (08/22 to 02/23)`
+    col.innerHTML += `<br/>
+    CGI, Internship (04/21 to 06/21 and 12/21 to 02/22)`
+
+    col.innerHTML += `<br/>
+    Mediabolaget, 3D Artist / Animator (2012 to 2020)<br/>
+    Logical Arts, 3D Artist / Animatör, (2011 till 2012)<br/>
+    Blom, 3D Artist, (2010 till 2011)<br/>
+    Sehsucht, Intern, (03/10 till 06/10)<br/>
+    Stripe (now part of PXLR), Intern, (09/09 till 12/09)
+    `
+
+    row.appendChild(col)
+
+    this.pages.push(row)
+  }
+
   render(){
 
     let currentPage
@@ -1582,6 +1648,11 @@ class MainContentElement extends HTMLDivElement{
       currentPageIndex = 2
     }
 
+    if(this.currentPage=="about"){
+      currentPage = this.pages[3]
+      currentPageIndex = 3
+    }
+
     if (this.previousPage=="home") {
       previousPage = this.pages[0]
       previousPageIndex = 0
@@ -1596,6 +1667,12 @@ class MainContentElement extends HTMLDivElement{
       previousPage = this.pages[2]
       previousPageIndex = 2
     }
+
+    if(this.previousPage=="about"){
+      previousPage = this.pages[3]
+      previousPageIndex = 3
+    }
+
 
     let animData = {
       currentPage:currentPage,
@@ -1645,6 +1722,7 @@ class MainContentElement extends HTMLDivElement{
   }
 
   async animateIn(animData){
+    console.log("animateIn")
     let object = animData.currentPage
 
     object.classList.remove("d-none")
@@ -1681,6 +1759,7 @@ class MainContentElement extends HTMLDivElement{
   }
 
   async animateOut(animData){
+    console.log("animateOut")
     let object = animData.previousPage
 
     object.classList.remove("d-none")
