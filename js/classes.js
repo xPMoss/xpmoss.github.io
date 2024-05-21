@@ -1,5 +1,210 @@
 
 
+//
+class BadgeElement extends HTMLDivElement{
+
+  constructor(data){
+    super(); // always call super() first in the constructor.
+
+    this.id = "badge-element-" + data.logo
+    this.classList.add("col-auto", "p-0", "m-0")
+
+    let badge = "https://img.shields.io/badge/"
+    
+    if(data.style == "full"){
+        badge += data.text
+    }
+    
+    badge += "-" + data.color
+    badge += "?style=for-the-badge"
+    badge += "&logo=" + data.logo
+    badge += "&logoColor=" + data.logoColor
+
+    let img = document.createElement("img")
+    img.src = badge
+
+    if(data.classes){
+      for(const cl of data.classes){
+        img.classList.add(cl)
+      }
+    }
+    
+
+    if(data.link){
+      this.href = data.url
+
+    }
+    else{
+
+      if(data.description){
+        this.setAttribute("role", "button")
+        this.addEventListener("click", ()=>{
+          console.log("CLICKED!")
+  
+          
+          new PopOverElement({element:this, data:data})
+  
+        })
+      }
+     
+      this.append(img)
+
+    }
+
+  }
+  
+
+}
+customElements.define('badge-element', BadgeElement, {extends: 'div'})
+
+
+//
+class PopOverElement extends HTMLDivElement{
+
+  origion = 0
+
+  w = 1280;
+  h = 720;
+
+  constructor(data){
+    super(); // always call super() first in the constructor.
+
+    this.id = "popover-element"
+
+    this.style.zIndex = "1050"
+    
+    let bg = document.createElement("div")
+    bg.style.zIndex = "1050"
+    bg.style.position = "absolute"
+    bg.classList.add("bg-dark")
+    bg.style.opacity = "0"
+    bg.style.width = "100vw"
+    bg.style.height = "100vh"
+    bg.addEventListener("click", ()=>{
+      let animout = this.animateOut(container, this.origion)
+
+        animout.then((data)=>{
+          data.finished.then((data)=>{
+            this.remove()
+            bg.remove()
+          })
+
+        })
+      
+    })
+    this.append(bg)
+
+    let container = document.createElement("div")
+    container.classList.add("py-2", "px-3", "border", "rounded-1", "shadow-sm", "bg-light")
+
+    container.style.position = "absolute"
+    let rect = data.element.getBoundingClientRect()
+    container.style.top = rect.top +rect.height/2 + "px"
+
+    let posX = rect.right - rect.width/2
+    let vw =  document.body.getBoundingClientRect().right/2
+    if(posX < vw){
+      container.style.left = rect.right - rect.width/2+ "px"
+      this.origion = 0
+    }
+    else{
+      this.origion = "100%"
+
+    }
+
+    container.style.maxWidth = "45vw"
+
+    let header = document.createElement("div")
+    header.classList.add("border-bottom", "fw-bold")
+    header.innerHTML = data.data.text.replaceAll("_", " ")
+    
+    let body = document.createElement("div")
+    body.innerHTML = data.data.description
+    
+    container.append(header)
+    container.append(body)
+
+    this.append(container)
+    
+    document.body.prepend(this)
+
+    console.log(container.getBoundingClientRect())
+    console.log(this.getBoundingClientRect())
+
+    if(posX < vw){
+      
+     
+    }
+    else{
+      container.style.left = rect.left - container.getBoundingClientRect().width + rect.width/2 +"px"
+
+      
+    }
+
+    //container.style.transform="scale(1)";
+    this.animateIn(container, this.origion)
+  }
+
+  async animateIn(object, origion){
+    console.log("animateIn")
+    object.style.transformOrigin= origion + " 0";
+
+    let translateX
+
+    translateX = [
+      { transform: "scale(0)"},
+      { transform: "scale(1)"},
+    ];
+     
+
+    const timing = {
+      duration: 200,
+      iterations: 1,
+      easing: "cubic-bezier(0, 0.5, 0, 1)"
+    };
+
+    let anim = object.animate(translateX, timing)
+
+    anim.finished.then((data)=>{
+      //console.log("data", data)
+    })
+
+    return anim
+
+  }
+
+  async animateOut(object, origion){
+    console.log("animateIn")
+    object.style.transformOrigin= origion + " 0";
+
+    let translateX
+
+    translateX = [
+      { transform: "scale(1)"},
+      { transform: "scale(0)"},
+    ];
+     
+
+    const timing = {
+      duration: 200,
+      iterations: 1,
+      easing: "ease-in"
+    };
+
+    let anim = object.animate(translateX, timing)
+
+    anim.finished.then((data)=>{
+      //console.log("data", data)
+    })
+
+    return anim
+
+  }
+
+  
+
+}
+customElements.define('popover-element', PopOverElement, {extends: 'div'})
 
 //
 class CanvasElement extends HTMLCanvasElement{
@@ -632,7 +837,35 @@ class CanvasElement extends HTMLCanvasElement{
 }
 customElements.define('canvas-element', CanvasElement, {extends: 'canvas'})
 
+//
+class CaretDowmElement{
 
+  constructor(){
+    let svg = document.createElement("svg")
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
+    svg.setAttribute("width", "16")
+    svg.setAttribute("height", "16")
+    svg.setAttribute("fill", "red")
+    svg.setAttribute("viewbox", "0 0 16 16")
+    svg.classList.add("bi", "bi-caret-down")
+
+    
+    let path = document.createElement("path")
+    path.setAttribute("d", "M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659")
+   
+    svg.appendChild(path)
+
+    return svg
+
+  }
+
+}
+
+/*
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
+</svg>
+*/
 
 //
 class ProjectElement extends HTMLDivElement{
@@ -911,340 +1144,6 @@ customElements.define('project-element', ProjectElement, {extends: 'div'})
 
 
 
-//
-class CaretDowmElement{
-
-  constructor(){
-    let svg = document.createElement("svg")
-    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg")
-    svg.setAttribute("width", "16")
-    svg.setAttribute("height", "16")
-    svg.setAttribute("fill", "red")
-    svg.setAttribute("viewbox", "0 0 16 16")
-    svg.classList.add("bi", "bi-caret-down")
-
-    
-    let path = document.createElement("path")
-    path.setAttribute("d", "M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659")
-   
-    svg.appendChild(path)
-
-    return svg
-
-  }
-
-}
-
-
-
-/*
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-  <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
-</svg>
-*/
-
-
-
-// Navigation Element
-class NavigationContentElement extends HTMLDivElement{
-  previousPage
-  currentPage
-
-  constructor(){
-    super()
-
-    this.id = "navigation-element"
-    this.classList.add("container-fluid")
-    this.classList.add("p-0")
-    this.classList.add("m-0", "mb-4")
-    this.classList.add("sticky-top")
-    this.classList.add("bg-light")
-
-    this.update()
-    this.render()
-
-    this.setupSwipeNavigation()
-    
-    this.addEventListener("ChangeEvent", ()=>{
-      this.update()
-
-    })
-
-  }
-
-  setupSwipeNavigation(){
-    let touchstartX = 0
-    let touchendX = 0
-
-    let touchstartY = 0
-    let touchendY = 0
-        
-    let previousPageIndex
-    let currentPageIndex
-
-    document.addEventListener('touchstart', e => {
-      //console.log("touchstart", e)
-      touchstartX = 0
-      touchendX = 0
-
-      touchstartY = 0
-      touchendY = 0
-
-      switch (this.currentPage) {
-        case 'home':
-          currentPageIndex = 0
-          break;
-        case 'projects':
-          currentPageIndex = 1
-          break;
-        case 'links':
-          currentPageIndex = 2
-          break;
-        case 'about':
-          currentPageIndex = 3
-          break;
-        default:
-          break;
-
-      }
-
-      touchstartX = e.changedTouches[0].screenX
-      touchstartY = e.changedTouches[0].screenY
-    })
-
-    document.addEventListener('touchend', e => {
-      //console.log("touchend", e)
-      touchendX = e.changedTouches[0].screenX
-      touchendY = e.changedTouches[0].screenY
-
-      let swipping = false
-      let distanceX = Math.abs(touchstartX - touchendX)
-      let distanceY = Math.abs(touchstartY - touchendY)
-
-      console.log("distanceX", distanceX)
-      console.log("distanceY", distanceY)
-
-      if (touchendX < touchstartX && distanceX > 100 && distanceY < 100){
-        //console.log('swiped left!')
-
-        swipping = true
-
-        switch (currentPageIndex) {
-          case 0:
-            this.previousPage = "home"
-            this.currentPage = "projects"
-            break;
-          case 1:
-            this.previousPage = "projects"
-            this.currentPage = "links"
-            break;
-          case 2:
-            this.previousPage = "links"
-            this.currentPage = "about"
-            break;
-          case 3:
-              this.previousPage = "about"
-              this.currentPage = "about"
-              break;
-          default:
-            break;
-  
-        }
-
-        
-
-      }
-      
-      if (touchendX > touchstartX && distanceX > 100 && distanceY < 100){
-          //console.log('swiped right!')
-
-          swipping = true
-
-          switch (currentPageIndex) {
-            case 0:
-              this.previousPage = "home"
-              this.currentPage = "home"
-              break;
-            case 1:
-              this.previousPage = "links"
-              this.currentPage = "home"
-              break;
-            case 2:
-              this.previousPage = "links"
-              this.currentPage = "projects"
-              break;
-            case 3:
-              this.previousPage = "projects"
-              this.currentPage = "about"
-              break;
-            default:
-              break;
-    
-          }
-            
-      } 
-
-      if(swipping){
-        localStorage.setItem('previousPage', this.previousPage);
-        localStorage.setItem('currentPage', this.currentPage);
-        document.body.dispatchEvent(NavigateEvent);
-  
-        swipping = false
-  
-      }
-
-      
-      
-      //console.log(this.previousPage +"=>"+ this.currentPage)
-      //console.log('swipping', swipping)
-    })
-
-    
-
-  }
-
-  render(){
-    this.innerHTML = ""
-
-    let row = document.createElement("div") 
-    row.classList.add("row")
-    row.classList.add("p-0")
-    row.classList.add("m-0")
-
-    let linkObjects = [
-      {
-        title: "Home",
-        page: "home"
-      },
-      {
-        title: "Projects",
-        page: "projects"
-      },
-      {
-        title: "Links",
-        page: "links"
-      },
-      {
-        title: "About",
-        page: "about"
-      },
-    ]
-
-    for (const lo of linkObjects) {
-      let li = document.createElement("div")
-      li.classList.add("col")
-      li.classList.add("p-0", "p-2")
-      li.classList.add("m-0")
-      li.classList.add("rounded-1", "text-center", "fs-4", "user-select-none")
-      li.role = "button"
-
-      li.innerText = lo.title
-      
-      li.addEventListener("click",()=>{
-
-        console.log("clicked!", lo.page)
-
-        localStorage.setItem('currentPage', lo.page);
-
-        if(this.currentPage != lo.page){
-          localStorage.setItem('previousPage', this.currentPage);
-          document.body.dispatchEvent(NavigateEvent);
-        }
-
-      })
-
-
-      //
-      if(this.currentPage == lo.page){
-        li.classList.add("border", "text-decoration-underline", "active")
-      }
-
-      row.appendChild(li)
-
-
-    }
-
-    this.appendChild(row)
-   
-
-  }
-
-  update(){
-    this.previousPage = localStorage.getItem('previousPage')
-    this.currentPage = localStorage.getItem('currentPage')
-
-    if(this.currentPage == null){
-      this.currentPage = "home"
-
-    }
-    
-  }
-
-
-
-}
-customElements.define('navigation-content-element', NavigationContentElement, {extends: 'div'})
-
-
-
-// Header Element
-class HeaderContentElement extends HTMLDivElement{
-
-  constructor(){
-    super()
-
-    this.id = "header-content"
-    this.classList.add("container-fluid")
-    this.classList.add("p-0", "px-4", "pb-4", "pt-3")
-    this.classList.add("m-0")
-
-    this.render()
-
-    this.addEventListener("ChangeEvent", ()=>{
-      this.update()
-
-    })
-
-  }
-
-  render(){
-    this.innerHTML = ""
-
-    let mainRow = document.createElement("div")
-    mainRow.classList.add("row")
-
-    let avatarCol = document.createElement("div")
-    avatarCol.classList.add("col-3", "col-md-2", "col-lg-1")
-    avatarCol.classList.add("p-0")
-    avatarCol.classList.add("m-0")
-
-    let avatarImg = document.createElement("img")
-    avatarImg.classList.add("img-fluid", "rounded-circle", "border", "bg-blue")
-    avatarImg.src = "img\\avatar_geometric_512.png"
-
-    let mainCol = document.createElement("div")
-    mainCol.classList.add("col")
-    mainCol.classList.add("p-0", "ps-4")
-    mainCol.classList.add("m-0")
-
-    avatarCol.appendChild(avatarImg)
-    mainRow.appendChild(avatarCol, mainCol)
-    this.appendChild(mainRow)
-
-  }
-
-  update(){
-    this.render()
-
-    
-  }
-
-
-
-}
-customElements.define('header-content-element', HeaderContentElement, {extends: 'div'})
-
-
 
 // Main Element
 class MainContentElement extends HTMLDivElement{
@@ -1279,112 +1178,103 @@ class MainContentElement extends HTMLDivElement{
 
   createHome(){
     let row = document.createElement("div")
-    row.classList.add("row")
-    row.classList.add("p-0")
-    row.classList.add("m-0")
-    row.classList.add("d-none")
+    row.classList.add("row", "p-0", "m-0", "d-none")
 
-    let col = document.createElement("div")
-    col.classList.add("col")
-    col.classList.add("p-0")
-    col.classList.add("m-0")
-
+    let col1 = document.createElement("div")
+    col1.classList.add("col-12", "p-0", "pb-2", "m-0")
     // My name is...
-    col.innerHTML = 
+    col1.innerHTML = 
     `
-    <div class="p-0 pb-2 m-0">
-      My name is Patrik and I am a web- and applications- developer with focus on JavaScript, HTML, CSS and C#.Net.
-    </div>
+    My name is Patrik and I am a web- and applications- developer with focus on JavaScript, HTML, CSS and C#.Net.
     `
-    
+    row.append(col1)
+
     // Languages
-    let badgeDiv_languages = document.createElement("div")
-    badgeDiv_languages.classList.add("border", "rounded-1", "px-2")
-    badgeDiv_languages.innerHTML += `<h4>Languages</h4>`
+    let badgeDiv_languages_div = document.createElement("div")
+    badgeDiv_languages_div.classList.add("row", "p-0", "m-0", "border", "rounded-1", "px-2")
+    badgeDiv_languages_div.innerHTML += `<h4 class="col-12 px-0">Languages</h4>`
 
     for (const bd of badgeData_languages) {
-      badgeDiv_languages.append(
-        createBadge(bd)
-      )
+      let badge = new BadgeElement(bd)
+      
+      badgeDiv_languages_div.append(badge)
     
     }
-    col.append(badgeDiv_languages)
-    col.innerHTML += `<br/>`
+    row.append(badgeDiv_languages_div)
+    //col.innerHTML += `<br/>`
 
+    let col2 = document.createElement("div")
+    col2.classList.add("col-12", "p-0", "pb-2", "m-0")
     // I love to code...
-    col.innerHTML += 
+    col2.innerHTML += 
     `
-    <div class="p-0 pb-2 m-0">
-      I love to code some quick functions in Javascript, add some html and css for webb apps, or play with some classes and methods in C#.Net.
-    </div>
+    I love to code some quick functions in Javascript, add some html and css for webb apps, or play with some classes and methods in C#.Net.
     `
+    row.append(col2)
+
     // Frameworks
-    let badgeDiv_frameworks = document.createElement("div")
-    badgeDiv_frameworks.classList.add("border", "rounded-1", "px-2", "col-auto")
-    badgeDiv_frameworks.innerHTML += `<h4>Frameworks</h4>`
+    let badgeDiv_frameworks_div = document.createElement("div")
+    badgeDiv_frameworks_div.classList.add("row", "p-0", "m-0", "border", "rounded-1", "px-2", "col-auto")
+    badgeDiv_frameworks_div.innerHTML += `<h4 class="px-0">Frameworks</h4>`
 
     for (const bd of badgeData_frameworks) {
-      badgeDiv_frameworks.append(
-        createBadge(bd)
-      )
+      let badge = new BadgeElement(bd)
+      
+      badgeDiv_frameworks_div.append(badge)
     
     }
-    col.append(badgeDiv_frameworks)
-    col.innerHTML += `<br/>`
-
+    row.append(badgeDiv_frameworks_div)
+   
     // Check out the projects...
-    col.innerHTML += 
+    let col3 = document.createElement("div")
+    col3.classList.add("col-12", "p-0", "pb-2", "m-0")
+    col3.innerHTML += 
     `
-    <div class="p-0 pb-2 m-0">
-      Check out the projects section for some of my coding- and animation- projects and experiements.
+    Check out the projects section for some of my coding- and animation- projects and experiements.
 
-      <br/><br/>
-      I have also been working with animation and graphics over the past 10 years.
-      <br/>
-      My main tools for animations are Cinema 4D, After Effects and Photoshop.
-    </div>
+    <br/><br/>
+    I have also been working with animation and graphics over the past 10 years.
+    <br/>
+    My main tools for animations are Cinema 4D, After Effects and Photoshop.
     `
+    row.append(col3)
+
     // Tools
     let badgeDiv = document.createElement("div")
-    badgeDiv.classList.add("border", "rounded-1", "px-2")
-    badgeDiv.innerHTML += `<h4>Tools</h4>`
+    badgeDiv.classList.add("row", "p-0", "m-0", "border", "rounded-1", "px-2")
+    badgeDiv.innerHTML += `<h4 class="px-0">Tools</h4>`
 
-    let badgeDiv_dev_tools = document.createElement("div")
-    badgeDiv_dev_tools.classList.add("mb-3")
     for (const bd of badgeData_tools) {
       if(bd.type == "dev_tool"){
-        badgeDiv_dev_tools.append(
-          createBadge(bd)
-        )
+        let badge = new BadgeElement(bd)
+
+        badgeDiv.append(badge)
       }
     }
-    badgeDiv.append(badgeDiv_dev_tools)
+    let dist = document.createElement("div")
+    dist.classList.add("py-2")
+    badgeDiv.append(dist)
 
-    let badgeDiv_dev_platform = document.createElement("div")
-    badgeDiv_dev_platform.classList.add("mb-3")
     for (const bd of badgeData_tools) {
       if(bd.type == "dev_platform"){
-        badgeDiv_dev_platform.append(
-          createBadge(bd)
-        )
+        let badge = new BadgeElement(bd)
+
+        badgeDiv.append(badge)
       }
     }
-    badgeDiv.append(badgeDiv_dev_platform)
+    let dist2 = document.createElement("div")
+    dist2.classList.add("py-2")
+    badgeDiv.append(dist2)
 
-    let badgeDiv_anim_tool = document.createElement("div")
     for (const bd of badgeData_tools) {
       if(bd.type == "anim_tool"){
-        badgeDiv_anim_tool.append(
-          createBadge(bd)
-        )
+        let badge = new BadgeElement(bd)
+
+        badgeDiv.append(badge)
       }
     }
-    badgeDiv.append(badgeDiv_anim_tool)
 
-    col.append(badgeDiv)
-
-    row.append(col)
-
+    row.append(badgeDiv)
     this.pages.push(row)
 
   }
@@ -1746,6 +1636,7 @@ class MainContentElement extends HTMLDivElement{
     const timing = {
       duration: 200,
       iterations: 1,
+      easing: "cubic-bezier(0, 0.5, 0, 1)"
     };
 
     let anim = object.animate(translateX, timing)
@@ -1783,6 +1674,7 @@ class MainContentElement extends HTMLDivElement{
     const timing = {
       duration: 200,
       iterations: 1,
+      easing: "ease-in"
     };
 
     let anim = object.animate(translateX, timing)
@@ -1823,66 +1715,5 @@ class MainContentElement extends HTMLDivElement{
 customElements.define('main-content-element', MainContentElement, {extends: 'div'})
 
 
-
-// Footer Element
-class FooterContentElement extends HTMLDivElement{
-
-  constructor(){
-    super()
-
-    this.id = "footer-content"
-    this.classList.add("container-fluid")
-    this.classList.add("p-0")
-    this.classList.add("m-0")
-    this.classList.add("fixed-bottom")
-    this.classList.add("bg-light")
-
-    this.render()
-
-    this.addEventListener("ChangeEvent", ()=>{
-      this.update()
-
-    })
-
-  }
-
-  render(){
-    this.innerHTML = ""
-
-    let row = document.createElement("div") 
-    row.classList.add("row")
-    row.classList.add("p-0")
-    row.classList.add("m-0")
-    
-    let cols = ["1", "2", "3"]
-    for (const co of cols) {
-      let c = document.createElement("div") 
-      c.classList.add("col")
-      c.classList.add("p-0", "p-2")
-      c.classList.add("m-0")
-      c.classList.add("rounded-1", "text-center", "fs-6", "user-select-none")
-      c.role = "button"
-
-      c.innerText = co
-
-      row.append(c)
-
-    }
-    
-
-    this.append(row)
-  }
-
-  update(){
-    this.render()
-
-
-    
-  }
-
-
-
-}
-customElements.define('footer-content-element', FooterContentElement, {extends: 'div'})
 
 

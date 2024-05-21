@@ -1516,7 +1516,7 @@ let projectData = [
         },
         media: {
             video: "https://player.vimeo.com/video/336417003",
-            image: "Rapid3DMapping.jpg",
+            image: "rapid_3d_mapping.jpg",
             thumbnail: null,
 			realtime: null
         },
@@ -2295,6 +2295,7 @@ let badgeData_languages = [
     {
         logo:"Csharp", 
         text:"Csharp", 
+        description: "C# is a general-purpose high-level programming language supporting multiple paradigms. C# encompasses static typing, strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines.",
         color:"512BD4", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2304,7 +2305,8 @@ let badgeData_languages = [
     },
     {
 		logo:"typescript", 
-		text:"typescript", 
+		text:"Typescript", 
+        description: "TypeScript is a free and open-source high-level programming language developed by Microsoft that adds static typing with optional type annotations to JavaScript. It is designed for the development of large applications and transpiles to JavaScript. Because TypeScript is a superset of JavaScript, all JavaScript programs are syntactically valid TypeScript, but they can fail to type-check for safety reasons.",
 		color:"3178C6", 
 		logoColor:"white", 
 		classes:["me-2", "mb-2", "rounded-1"], 
@@ -2315,6 +2317,7 @@ let badgeData_languages = [
     {
 		logo:"JavaScript", 
 		text:"JavaScript", 
+        description: "JavaScript, often abbreviated as JS, is a programming language and core technology of the Web, alongside HTML and CSS. 99% of websites use JavaScript on the client side for webpage behavior.",
 		color:"F7DF1E", 
 		logoColor:"black", 
 		classes:["me-2", "mb-2", "rounded-1"], 
@@ -2324,7 +2327,8 @@ let badgeData_languages = [
 	},
     {
 		logo:"html5", 
-		text:"html", 
+		text:"Html", 
+        description: "HyperText Markup Language (HTML) is the standard markup language for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.",
 		color:"E34F26", 
 		logoColor:"white", 
 		classes:["me-2", "mb-2", "rounded-1"], 
@@ -2334,7 +2338,8 @@ let badgeData_languages = [
 	},
     {
 		logo:"css3", 
-		text:"css", 
+		text:"Css", 
+        description: "Cascading Style Sheets (CSS) is a style sheet language used for specifying the presentation and styling of a document written in a markup language such as HTML or XML (including XML dialects such as SVG, MathML or XHTML). CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.",
 		color:"1572B6", 
 		logoColor:"white", 
 		classes:["mb-2", "rounded-1"], 
@@ -2349,6 +2354,7 @@ let badgeData_frameworks = [
     {
         logo:".NET", 
         text:".NET", 
+        description: "The .NET Framework (pronounced as 'dot net') is a proprietary software framework developed by Microsoft that runs primarily on Microsoft Windows. It was the predominant implementation of the Common Language Infrastructure (CLI) until being superseded by the cross-platform .NET project. It includes a large class library called Framework Class Library (FCL) and provides language interoperability (each language can use code written in other languages) across several programming languages. Programs written for .NET Framework execute in a software environment (in contrast to a hardware environment) named the Common Language Runtime (CLR). The CLR is an application virtual machine that provides services such as security, memory management, and exception handling. As such, computer code written using .NET Framework is called 'managed code. FCL and CLR together constitute the .NET Framework.",
         color:"512BD4", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2359,6 +2365,7 @@ let badgeData_frameworks = [
 	{
         logo:"Angular", 
         text:"Angular", 
+        description: "Angular is a TypeScript-based, free and open-source single-page web application framework run on Node.js. It is led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS. Angular ecosystem consists of a diverse group of over 1.7 million developers, library authors, and content creators.",
         color:"de002d", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2368,7 +2375,8 @@ let badgeData_frameworks = [
     },
 	{
         logo:"bootstrap", 
-        text:"bootstrap", 
+        text:"Bootstrap",
+        description: "Bootstrap (formerly Twitter Bootstrap) is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains HTML, CSS and (optionally) JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.", 
         color:"7952B3", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2378,7 +2386,8 @@ let badgeData_frameworks = [
     },
 	{
         logo:"jquery", 
-        text:"jquery", 
+        text:"Jquery", 
+        description: "jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animations, and Ajax. It is free, open-source software using the permissive MIT License. As of August 2022, jQuery is used by 77% of the 10 million most popular websites. Web analysis indicates that it is the most widely deployed JavaScript library by a large margin, having at least three to four times more usage than any other JavaScript library.",
         color:"0769AD", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2388,7 +2397,10 @@ let badgeData_frameworks = [
     },
 	{
         logo:"node.js", 
-        text:"nodedotjs", 
+        text:"Node.js", 
+        description: `Node.js is a cross-platform, open-source JavaScript runtime environment that can run on Windows, Linux, Unix, macOS, and more. Node.js runs on the V8 JavaScript engine, and executes JavaScript code outside a web browser.
+
+        Node.js lets developers use JavaScript to write command line tools and for server-side scripting. The ability to run JavaScript code on the server is often used to generate dynamic web page content before the page is sent to the user's web browser. Consequently, Node.js represents a "JavaScript everywhere" paradigm, unifying web-application development around a single programming language, as opposed to using different languages for the server- versus client-side programming.`,
         color:"339933", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2398,7 +2410,8 @@ let badgeData_frameworks = [
     },
 	{
         logo:"npm", 
-        text:"npm", 
+        text:"Npm", 
+        description: "npm is a package manager for the JavaScript programming language maintained by npm, Inc., a subsidiary of GitHub. npm is the default package manager for the JavaScript runtime environment Node.js and is included as a recommended feature in the Node.js installer.",
         color:"CB3837", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2412,6 +2425,7 @@ let badgeData_tools = [
     {
         logo:"visualstudiocode", 
         text:"Visual_studio_code", 
+        description: "Visual Studio Code, also commonly referred to as VS Code, is a source-code editor developed by Microsoft for Windows, Linux, macOS and web browsers. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded version control with Git. Users can change the theme, keyboard shortcuts, preferences, and install extensions that add functionality.",
         color:"007ACC", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2422,7 +2436,8 @@ let badgeData_tools = [
     },
 	{
         logo:"visualstudio", 
-        text:"visual_studio", 
+        text:"Visual_studio", 
+        description: "Visual Studio is an integrated development environment (IDE) developed by Microsoft. It is used to develop computer programs including websites, web apps, web services and mobile apps. Visual Studio uses Microsoft software development platforms including Windows API, Windows Forms, Windows Presentation Foundation (WPF), Windows Store and Microsoft Silverlight. It can produce both native code and managed code.",
         color:"5C2D91", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2434,6 +2449,7 @@ let badgeData_tools = [
 	{
         logo:"azuredevops", 
         text:"DevOps", 
+        description: "DevOps is a methodology in the software development and IT industry. Used as a set of practices and tools, DevOps integrates and automates the work of software development (Dev) and IT operations (Ops) as a means for improving and shortening the systems development life cycle. DevOps is complementary to agile software development; several DevOps aspects came from the agile way of working.",
         color:"0078D7", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2444,7 +2460,8 @@ let badgeData_tools = [
     },
 	{
         logo:"firebase", 
-        text:"firebase", 
+        text:"Firebase", 
+        description: "Firebase is a set of backend cloud computing services and application development platforms provided by Google. It hosts databases, services, authentication, and integration for a variety of applications, including Android, iOS, JavaScript, Node.js, Java, Unity, PHP, and C++.",
         color:"F7DF1E", 
         logoColor:"black", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2455,7 +2472,8 @@ let badgeData_tools = [
     },
 	{
         logo:"powerautomate", 
-        text:"power_automate", 
+        text:"Power_automate", 
+        description: "Microsoft Power Automate, previously known as Microsoft Flow until November 2019, is a SaaS platform by Microsoft for optimizing and automating workflows and business processes. It is part of the Microsoft Power Platform line of products, which include Power Apps and Power BI.",
         color:"0066FF", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2466,7 +2484,8 @@ let badgeData_tools = [
     },
 	{
         logo:"cinema4d", 
-        text:"Cinema_4D", 
+        text:"Cinema_4D",
+        description: "Cinema 4D is a 3D software suite developed by the German company Maxon.", 
         color:"011A6A", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2478,6 +2497,7 @@ let badgeData_tools = [
 	{
         logo:"adobeaftereffects", 
         text:"After_Effects", 
+        description: "Adobe After Effects is a digital visual effects, motion graphics, and compositing application developed by Adobe; it is used in the post-production process of film making, video games and television production. Among other things, After Effects can be used for keying, tracking, compositing, and animation. It also functions as a very basic non-linear editor, audio editor, and media transcoder. In 2019, the program won an Academy Award for scientific and technical achievement.",
         color:"9999FF", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2489,6 +2509,7 @@ let badgeData_tools = [
 	{
         logo:"adobeillustrator", 
         text:"Adobe_Illustrator", 
+        description: "Adobe Illustrator is a vector graphics editor and design software developed and marketed by Adobe. Originally designed for the Apple Macintosh, development of Adobe Illustrator began in 1985. Along with Creative Cloud (Adobe's shift to a monthly or annual subscription service delivered over the Internet), Illustrator CC was released. The latest version, Illustrator 2024, was released on October 10, 2023, and is the 28th generation in the product line. Adobe Illustrator was reviewed as the best vector graphics editing program in 2021 by hp Magazine.",
         color:"FF9A00", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2500,6 +2521,7 @@ let badgeData_tools = [
 	{
         logo:"adobephotoshop", 
         text:"Adobe_Photoshop", 
+        description: "Adobe Photoshop is a raster graphics editor developed and published by Adobe for Windows and macOS. It was originally created in 1987 by Thomas and John Knoll. Since then, the software has become the most used tool for professional digital art, especially in raster graphics editing. Owing to its fame, the program's name has become genericised as a verb (e.g. 'to photoshop an image', 'photoshopping', and 'photoshop contest') although Adobe disapproves of such use.",
         color:"31A8FF", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2511,6 +2533,7 @@ let badgeData_tools = [
 	{
         logo:"adobepremierepro", 
         text:"Adobe_Premiere_Pro", 
+        description: "Adobe Premiere Pro is a timeline-based and non-linear video editing software application (NLE) developed by Adobe and published as part of the Adobe Creative Cloud licensing program. First launched in 2003, Adobe Premiere Pro is a successor of Adobe Premiere (first launched in 1991). It is geared towards professional video editing, while its sibling, Adobe Premiere Elements, targets the consumer market.",
         color:"9999FF", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 
@@ -2522,6 +2545,7 @@ let badgeData_tools = [
 	{
         logo:"adobexd", 
         text:"Adobe_XD", 
+        description: "Adobe XD (also known as Adobe Experience Design) is a vector design tool for web and mobile applications, developed and published by Adobe Inc. It is available for macOS and Windows, and there are versions for iOS and Android to help preview the result of work directly on mobile devices. Adobe XD enables website wireframing and creating click-through prototypes.",
         color:"FF61F6", 
         logoColor:"white", 
         classes:["me-2", "mb-2", "rounded-1"], 

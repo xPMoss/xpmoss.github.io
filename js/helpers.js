@@ -60,21 +60,23 @@ let createBadge = (data)=>{
     img.src = badge
 
     if(data.classes){
-        for(const cl of data.classes){
-            img.classList.add(cl)
-        }
+      for(const cl of data.classes){
+        img.classList.add(cl)
+      }
     }
     
 
     if(data.link){
-        let a = document.createElement("a")
-        a.href = data.url
+      let a = document.createElement("a")
+      a.href = data.url
 
-        a.append(img)
-        return a
+      a.append(img)
+      return a
+
     }
     else{
-        return img
+         return img
+
     }
     
 }
