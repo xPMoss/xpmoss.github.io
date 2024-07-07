@@ -160,6 +160,7 @@ class PopOverElement extends HTMLDivElement{
     const timing = {
       duration: 200,
       iterations: 1,
+      //easing: "steps(3, jump-none)"
       easing: "cubic-bezier(0, 0.5, 0, 1)"
     };
 
